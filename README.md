@@ -11,7 +11,7 @@ You will need Android Studio (including all the respective Java libraries, sdks 
 
 Ionic has its own <a href='https://ionicframework.com/docs/'>documentation </a> so any Ionic based solutions should be there.
 
-To install and run this source code you will need to install the Ionic CLI  ``npm install -g @ionic/cli``
+To install and run this source code you will need to install the Ionic CLI  ```npm install -g @ionic/cli```
  
 After that run npm install as usual.
 
