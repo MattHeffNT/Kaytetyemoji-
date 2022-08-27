@@ -1,5 +1,5 @@
 
-#KaytejEmoji
+# KaytejEmoji
 
 
 This is an Ionic/React/TypeScript based recreation of the [IndigEmoji](https://github.com/Indigemoji-Australia/indigemoji-app) app. 
