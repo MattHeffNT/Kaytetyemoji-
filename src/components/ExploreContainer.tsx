@@ -1,6 +1,7 @@
 import './ExploreContainer.css';
+import emojis from '../assets/emojis.json'
 import { useState, useEffect, useRef } from 'react';
-
+import { IonContent, IonHeader, IonSearchbar, IonFooter, IonGrid, IonRow, IonCol } from '@ionic/react';
 
 // At some stage will need to stop the name prop being passed to
 // each page
@@ -9,71 +10,50 @@ interface ContainerProps {
   name: string;
 }
 
-
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
 
   const [emojisData, setEmojisData] = useState([]);
 
-  //Just using the indigEmoji JSON at the moment, will need to replace this in prod
-  const url = 'https://raw.githubusercontent.com/Indigemoji-Australia/indigemoji-app/master/assets/emojis.json';
+
+  // mount the icons container to try and load in the images in the emoji folder
+  const iconsContainer = useRef<HTMLDivElement>(null); const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(res => setEmojisData(res))
-      .catch(err => console.log(err))
-  }, []);
 
+    // console.log(emojis[1])
+    var divElement = iconsContainer.current;
+    // console.log(divElement);
 
-  // img.src = "../assets/emojis/"
-  // document.body.appendChild(img)
-
-
-  const iconsContainer = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const divElement = iconsContainer.current;
-    console.log(divElement);
-
-
+    // divElement.innerHTML += `<img src="../assets/emojis/ure.png"></img>`
     // append images here might have to chuck in the other fetch data in here too then just put it all togher
-
-
     // for i in amount of files in emoji directory, loop through and append to the div element
-
-    // divElement += ``
-
-
 
   }, []);
 
   // call fetch once image clicked and populate modal with respective data
 
-  // grab all emojis from folder and place them in the container
-  // for (let i = 0; i < img.length; i++) {
-  //   const element = img[i];
-  //   console.log(element)
-  // }
-
-
-
   return (
-    <div className="container">
+    < IonContent >
 
-      <div id="icons-container" ref={iconsContainer}>
-        <strong>search bar </strong>
-        <br />
 
+      {/* hmm might pull this out to its own component, keeping here for the moment so that it will be easier to search */}
+      {/* the text from the json  */}
+
+      {/* insert the emojis into their own column */}
+      <div className='container'>
+        <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
+        <IonGrid>
+          <IonRow>
+            <IonCol>
+
+              col1
+
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </div>
-      <br />
+    </IonContent >
 
-      <strong>{name}</strong>
-      <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-
-
-
-
-    </div >
   );
 };
 

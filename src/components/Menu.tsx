@@ -23,8 +23,8 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Inbox',
-    url: '/page/Inbox',
+    title: 'Home',
+    url: '/page/Home',
     iosIcon: mailOutline,
     mdIcon: mailSharp
   },
@@ -85,15 +85,6 @@ const Menu: React.FC = () => {
           })}
         </IonList>
 
-        {/* <IonList id="labels-list"> */}
-        {/*   <IonListHeader>Labels</IonListHeader> */}
-        {/*   {labels.map((label, index) => ( */}
-        {/*     <IonItem lines="none" key={index}> */}
-        {/*       <IonIcon slot="start" icon={bookmarkOutline} /> */}
-        {/*       <IonLabel>{label}</IonLabel> */}
-        {/*     </IonItem> */}
-        {/*   ))} */}
-        {/* </IonList> */}
       </IonContent>
     </IonMenu>
   );
