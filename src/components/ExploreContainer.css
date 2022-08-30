@@ -3,8 +3,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 10%;
-  transform: translateY(-50%);
+  /* top: 150%; */
+  margin-top:1rem;
+  border-radius:12px;
+  /* transform: translateY(-50%); */
   background-color:white;
   color:black;
 }
@@ -27,4 +29,8 @@
 
 IonContent {
   background-color: red;
+}
+
+ion-img  {
+  width:5em;
 }
