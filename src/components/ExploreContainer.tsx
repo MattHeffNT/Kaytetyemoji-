@@ -16,22 +16,8 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   const [emojisData, setEmojisData] = useState([]);
   const [searchText, setSearchText] = useState('');
 
-
   // mount the icons container to try and load in the images in the emoji folder
   const iconsContainer = useRef<HTMLDivElement>(null);
-
-  // might be better to use "useRef" for this 
-  useEffect(() => {
-
-    var divElement = iconsContainer.current;
-
-    // divElement.innerHTML += `<img src="../assets/emojis/ure.png"></img>`
-    // append images here might have to chuck in the other fetch data in here too then just put it all togher
-    // for i in amount of files in emoji directory, loop through and append to the div element
-
-  }, []);
-
-
 
   // get array of emoji json object keys before using map method
   const result: any = Object.keys(emojis).map((key) => {
