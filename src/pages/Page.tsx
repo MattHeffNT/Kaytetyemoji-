@@ -13,10 +13,8 @@ const Page: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>{/* color="light" */}
-
-
+      <IonHeader id="header">
+        <IonToolbar>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -30,12 +28,12 @@ const Page: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            {/* put search bar here maybe? */}
 
           </IonToolbar>
         </IonHeader>
 
-        {/* Remove name prop from being passed each page  */}
+        {/* Remove name prop from being passed each page, also place search here maybe 
+        if want to seperate states from container  */}
         <ExploreContainer name={name} />
       </IonContent>
     </IonPage >

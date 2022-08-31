@@ -1,6 +1,24 @@
 #homeIcon {
-  width:3em;
+  width:2.5em;
   padding-top:0.5em;
   padding-bottom:0.5em;
 }
 
+/* get rid of material design shadow on header */
+ion-header::after {
+  background:none !important;
+}
+/* ion-toolbar { */
+/*   --ion-toolbar-background:none; */
+/*   --ion-toolbar-border-color:none; */
+
+/* } */
+
+/* #root { */
+/*   background-image:url('../assets/images/background.png') !important; */
+/* } */
+
+/* change to the ochre yellow (can grab from the IndigEmoji) */
+/* .ion-page  { */
+/*     --ion-color-primary:red !important;  */
+/* } */
