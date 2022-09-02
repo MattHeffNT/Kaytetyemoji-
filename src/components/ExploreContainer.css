@@ -61,3 +61,21 @@ ion-chip {
   height: 3.5em;
   margin: -0.1em;
 }
+
+.modal-icon {
+  font-size:1.5em;
+  padding:12px;
+}
+
+.modal-icon+h4 {
+  /* color:red; */
+  vertical-align:middle;
+}
+
+.modal-container>ion-grid>ion-col {
+  display:grid;
+  justify-content: center;
+  padding:1em;
+  vertical-align: middle;
+}
+

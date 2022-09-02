@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 // import Ion components (seperated into two lines for readability)
 import { IonPage, IonContent, IonSearchbar, IonHeader, IonToolbar, IonTitle, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
+import IonIcon from '@reacticons/ionicons'
+
 // At some stage will need to stop the name prop being passed to
 // each page
 
@@ -83,7 +85,10 @@ const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonButton onClick={onClose}>Close</IonButton>
+
+            {/* I think a "close" works better here than the back icon */}
+            <IonButton onClick={onClose} >Close</IonButton>
+
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -92,16 +97,33 @@ const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
         <div className="modal-container">
 
           <IonImg src={emoji.file} alt={emoji.name} id="modalImg" />
+
           {/* need to makes the h1 switch between arrernte(katj and english) */}
           <h1> {emoji.name_arrernte}</h1>
           <IonChip>Arrernte</IonChip>
           <IonChip>English</IonChip>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
-            reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui.
-            Eaque, dicta.
-          </p>
+          {/* <p> */}
+          {/*   Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos */}
+          {/*   reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. */}
+          {/*   Eaque, dicta. */}
+          {/* </p> */}
+          <br />
+          <br />
+          {/* Share button with icon  */}
+          {/* <div className='icon-container'> */}
+          <IonGrid>
+            <IonCol>
+              <IonRow>
+                <IonIcon name="share-social-outline" className="modal-icon" size="large" /><h4> Share </h4>
+              </IonRow>
+              <IonRow>
+                <IonIcon className="modal-icon" name='play-circle-outline' size="large" /> <h4> Play </h4>
+              </IonRow>
+            </IonCol>
+          </IonGrid>
+          {/* </div> */}
         </div>
+
       </IonContent>
     </IonModal >
 
