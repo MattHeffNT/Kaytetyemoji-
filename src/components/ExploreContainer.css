@@ -3,13 +3,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  /* top: 150%; */
-  /* margin-top:1rem; */
   border-radius:2em;
   padding-top:1em;
-  /* transform: translateY(-50%); */
-  /* background-color:red; */
-  color:black;
 }
 
 .container strong {
@@ -38,8 +33,31 @@ ion-img  {
   margin:auto;
   width:95%;
   z-index:10;
-
 }
 
 
+/* modal styles   */
 
+#modalImg {
+  width:12em;
+  margin: auto;
+}
+
+.modal-container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius:2em;
+  padding-top:1em;
+  transform: translateY(20%);
+}
+
+ion-chip {
+/* background: red; */
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: bold;
+  height: 3.5em;
+  margin: -0.1em;
+}
