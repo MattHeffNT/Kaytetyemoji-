@@ -1,7 +1,7 @@
 import './ExploreContainer.css';
 import emojis from '../assets/emojis.json'
 // import '../assets/images'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // import Ion components (seperated into two lines for readability)
 import { IonPage, IonContent, IonSearchbar, IonHeader, IonToolbar, IonTitle, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
@@ -11,11 +11,8 @@ import IonIcon from '@reacticons/ionicons'
 // At some stage will need to stop the name prop being passed to
 // each page
 
-interface ContainerProps {
-  name: string;
-}
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+const ExploreContainer: React.FC<any> = () => {
 
   const [emojisData, setEmojisData] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -50,7 +47,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
             {/* map emoji images here, then on click open and load modal with larger emoji, translation options, audio, and share button*/}
             {arr.map((emoji: any) => (
               <IonCol>
-                <IonImg src={emoji.file} onClick={() => { setMyModal({ isOpen: true }); setEmojisData(emoji); console.log(emoji) }} />
+                <IonImg src={emoji.file} onClick={() => { setMyModal({ isOpen: true }); setEmojisData(emoji); }} />
               </IonCol>
             ))}
 
@@ -73,10 +70,42 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
 };
 export default ExploreContainer;
 
-// Modal function
+// Modal component 
 const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
 
   const emoji = initialData
+  const [name, setName] = useState(emoji.name_arrernte);
+
+  const ArrernteChip = useRef<any>()
+  const EnglishChip = useRef<any>()
+
+  // change active color and setName when Arrernte or English is selected in the modal
+  const modalName = (e: any) => {
+
+    const languageChoice = e.nativeEvent.srcElement.innerText
+
+    // will obviously need to change these names when populating with Katyetye
+    // will also need to add fade animation to match IndigEmoji
+    if (languageChoice == "Arrernte") {
+
+      setName(emoji.name_arrernte)
+      e.nativeEvent.srcElement.style = "background:#f4bd29;"
+
+      // grab the other chip and change its colour to default 
+      EnglishChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
+
+    } else if (languageChoice == "English") {
+
+      setName(emoji.name)
+      e.nativeEvent.srcElement.style = "background:#f4bd29;"
+
+      // grab the other chip and change its colour to default 
+      ArrernteChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
+    }
+
+    // need to add the event listener for the modal closing to clear the english/arrernte name for the emoji
+
+  }
 
 
   return (
@@ -99,9 +128,12 @@ const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
           <IonImg src={emoji.file} alt={emoji.name} id="modalImg" />
 
           {/* need to makes the h1 switch between arrernte(katj and english) */}
-          <h1> {emoji.name_arrernte}</h1>
-          <IonChip>Arrernte</IonChip>
-          <IonChip>English</IonChip>
+          {/* might be easier to do this with a React state? */}
+          <h1 > {name}</h1>
+
+          <IonChip ref={ArrernteChip} id="aChip" onClick={modalName}>Arrernte</IonChip>
+          <IonChip ref={EnglishChip} onClick={modalName}>English</IonChip>
+
           {/* <p> */}
           {/*   Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos */}
           {/*   reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. */}

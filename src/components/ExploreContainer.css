@@ -50,16 +50,24 @@ ion-img  {
   right: 0;
   border-radius:2em;
   padding-top:1em;
-  transform: translateY(20%);
+  transform: translateY(10%);
 }
 
 ion-chip {
-/* background: red; */
   border-radius: 0;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
-  height: 3.5em;
-  margin: -0.1em;
+  height: 2.5em;
+  margin:auto;
+  margin-top:1.5em;
+  text-align:center;
+  padding:1em;
+}
+
+#aChip {
+  background:#f4bd29;
+
+
 }
 
 .modal-icon {
@@ -69,7 +77,7 @@ ion-chip {
 
 .modal-icon+h4 {
   /* color:red; */
-  vertical-align:middle;
+  margin-top:18%;
 }
 
 .modal-container>ion-grid>ion-col {
