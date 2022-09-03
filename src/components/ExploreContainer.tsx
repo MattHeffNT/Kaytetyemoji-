@@ -71,13 +71,20 @@ const ExploreContainer: React.FC<any> = () => {
 export default ExploreContainer;
 
 // Modal component 
-const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
+const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
   const emoji = initialData
-  const [name, setName] = useState(emoji.name_arrernte);
+  var [name, setName]: any = useState(emoji.name_arrernte);
 
   const ArrernteChip = useRef<any>()
   const EnglishChip = useRef<any>()
+
+  // set the default title to arrernte when modal opened
+  useEffect(() => {
+
+    setName(emoji.name_arrernte)
+
+  }, [emoji.name_arrernte])
 
   // change active color and setName when Arrernte or English is selected in the modal
   const modalName = (e: any) => {
@@ -91,7 +98,7 @@ const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
       setName(emoji.name_arrernte)
       e.nativeEvent.srcElement.style = "background:#f4bd29;"
 
-      // grab the other chip and change its colour to default 
+      // grab the inactive chip and change its colour to default 
       EnglishChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
 
     } else if (languageChoice == "English") {
@@ -99,12 +106,9 @@ const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
       setName(emoji.name)
       e.nativeEvent.srcElement.style = "background:#f4bd29;"
 
-      // grab the other chip and change its colour to default 
+      // grab the inactive chip and change its colour to default 
       ArrernteChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
     }
-
-    // need to add the event listener for the modal closing to clear the english/arrernte name for the emoji
-
   }
 
 
@@ -128,21 +132,16 @@ const MyModal: React.FC<any> = ({ initialData, isOpen, onClose }) => {
           <IonImg src={emoji.file} alt={emoji.name} id="modalImg" />
 
           {/* need to makes the h1 switch between arrernte(katj and english) */}
-          {/* might be easier to do this with a React state? */}
-          <h1 > {name}</h1>
+          {/* might be easier to do this with a React state? or maybe i dunno an array?*/}
+          <h1> {name}</h1>
 
           <IonChip ref={ArrernteChip} id="aChip" onClick={modalName}>Arrernte</IonChip>
           <IonChip ref={EnglishChip} onClick={modalName}>English</IonChip>
 
-          {/* <p> */}
-          {/*   Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos */}
-          {/*   reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. */}
-          {/*   Eaque, dicta. */}
-          {/* </p> */}
+          {/* delete the line breaks and do this with css  */}
           <br />
           <br />
-          {/* Share button with icon  */}
-          {/* <div className='icon-container'> */}
+
           <IonGrid>
             <IonCol>
               <IonRow>
