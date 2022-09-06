@@ -80,10 +80,23 @@ ion-chip {
   margin-top:18%;
 }
 
+#playIcon {
+  /* background:red; */
+  /* padding:10%; */
+  width:30%;
+}
+
 .modal-container>ion-grid>ion-col {
   display:grid;
   justify-content: center;
   padding:1em;
   vertical-align: middle;
 }
+
+/* changes color of play icon when pressed */
+.audio-active{
+  color:#f4bd29;
+  transition: 1s;
+}
+
 
