@@ -6,9 +6,9 @@ import { useEffect, useState, useRef } from 'react';
 // import Ion components (seperated into two lines for readability)
 import { IonPage, IonContent, IonSearchbar, IonHeader, IonToolbar, IonTitle, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
-import IonIcon from '@reacticons/ionicons'
+// import IonIcon from '@reacticons/ionicons'
+import MyModal from './MyModal'
 // import { image } from 'ionicons/icons';
-
 
 
 const ExploreContainer: React.FC<any> = () => {
@@ -72,164 +72,157 @@ const ExploreContainer: React.FC<any> = () => {
 };
 export default ExploreContainer;
 
-// Modal component 
-const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
+// // Modal component 
+// const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
-  const emoji = initialData
-  var [name, setName]: any = useState(emoji.name_arrernte);
+//   const emoji = initialData
+//   var [name, setName]: any = useState(emoji.name_arrernte);
 
-  const ArrernteChip = useRef<any>()
-  const EnglishChip = useRef<any>()
-  const AudioIconOn = '../assets/images/audio-on.png'
+//   const ArrernteChip = useRef<any>()
+//   const EnglishChip = useRef<any>()
+//   const [isPlaying, setIsPlaying] = useState(false)
 
+//   const playEvent = useRef<any>()
 
-  // add eventlistener so that if clsoe button pressed, it reloads name state to arrente and stops audio
+//   // Set the default title to arrernte when modal opened
+//   useEffect(() => {
 
+//     setName(emoji.name_arrernte)
 
-  // set the default title to arrernte when modal opened
-  useEffect(() => {
-
-    setName(emoji.name_arrernte)
-
-  }, [emoji.name_arrernte])
+//   }, [emoji.name_arrernte])
 
 
-  // change active color and setName when Arrernte or English is selected in the modal
-  const modalName = (e: any) => {
+//   // change active chip color and setName when Arrernte or English is selected in the modal
+//   const modalName = (e: any) => {
 
-    const languageChoice = e.nativeEvent.srcElement.innerText
+//     const languageChoice = e.nativeEvent.srcElement.innerText
 
+//     // will obviously need to change these names when populating with Katyetye
+//     // will also need to add fade animation to match IndigEmoji
+//     if (languageChoice == "Arrernte") {
 
-    // will obviously need to change these names when populating with Katyetye
-    // will also need to add fade animation to match IndigEmoji
-    if (languageChoice == "Arrernte") {
+//       setName(emoji.name_arrernte)
+//       e.nativeEvent.srcElement.style = "background:#f4bd29;transition:1.5s;"
 
-      setName(emoji.name_arrernte)
-      e.nativeEvent.srcElement.style = "background:#f4bd29;transition:1.5s;"
+//       // grab the inactive chip and change its colour to default 
+//       EnglishChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
 
-      // grab the inactive chip and change its colour to default 
-      EnglishChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
+//     } else if (languageChoice == "English") {
 
-    } else if (languageChoice == "English") {
+//       setName(emoji.name)
+//       e.nativeEvent.srcElement.style = "background:#f4bd29;transition:1.5s;"
 
+//       // grab the inactive chip and change its colour to default 
+//       ArrernteChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
+//     }
+//   }
 
-      setName(emoji.name)
-      e.nativeEvent.srcElement.style = "background:#f4bd29;transition:1.5s;"
+//   const audio = new Audio(
+//     emoji.audio
+//   )
 
-      // grab the inactive chip and change its colour to default 
-      ArrernteChip.current.style = "background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)"
-    }
-  }
+//   audio.preload = "metadata"
+//   audio.controls = true
 
-  // const [emojiAudio,setEmojiAudio] = useState('')
+//   //play audio and function so that the colour of the play button stays yellow until end of audio
+//   const playAudio = (e: any) => {
 
-  const audio = new Audio(
-    emoji.audio
-  )
+//     const icon = e.currentTarget.children[0]
 
-  audio.preload = "metadata"
-  audio.controls = true
-
-
-  // add function so that the colour of the play button stays yellow until end of audio
-  const playAudio = (e: any) => {
-
-    // if audio already streaming, a second click will pause it 
-    console.log(audio)
-
-    if (audio.ended == false) {
-      console.log("audio playing")
-    }
+//     setIsPlaying(true)
 
 
-    const duration = audio.duration * 1000
+//     // toggle play/ pause
+//     const prevValue = isPlaying;
+//     setIsPlaying(!prevValue);
 
-    // audio.onclick(() => { console.log("sup") })
+//     if (!prevValue) {
 
-    if (!audio.paused) {
-      audio.pause();
-    }
+//       // play the Emoji audio
+//       playEvent.current.play()
 
-    audio.onclick = () => { console.log("sup") }
+//       // change color of play icon to ochre yellow
+//       icon.classList.add('audio-active')
 
-    const icon = e.currentTarget.children[0]
-    icon.classList.add('audio-active')
+//     } else {
+//       playEvent.current.pause()
+//       playEvent.current.currentTime = 0
+//       icon.classList.remove('audio-active')
+//     }
 
+//     // once audio has finished, set playing back to false and reset play icon style to default state
+//     playEvent.current.onended = () => {
+//       console.log("ended")
+//       icon.classList.remove('audio-active')
+//       setIsPlaying(false)
+//     }
 
-    // timer function to change play icon to yellow when audio is playing and switch it back to default color when it stops
-    setTimeout(() => {
-      icon.classList.remove('audio-active')
-    }, duration);
+//   }
 
-    audio.play()
-  }
+//   // add code to toggle play/stop of audio
+//   // it should also stop when we close the modal
+//   // resets name to default arrente
+//   const Close = (e: any) => {
 
-  // add code to toggle play/stop of audio
-  // it should also stop when we close the modal
-  // resets name to default arrente
-  const Close = (e: any) => {
+//     // stop the audio
+//     setIsPlaying(false)
 
-    // currently a bug where if you click the language switch as audio is playing, it continues to play if you hit close
-    audio.pause()
-    // set timer on this so that you don't see the name of the emoji change straight away
-    setTimeout(() => {
+//     // set timer on modal so that you don't see the name of the emoji change straight away when you close it
+//     setTimeout(() => {
 
-      setName(emoji.name_arrernte)
+//       setName(emoji.name_arrernte)
 
-    }, 200);
+//     }, 200);
 
-    // need a better way to stop the audio completely 
-    onClose()
+//     // close the modal 
+//     onClose()
+//   }
 
-  }
+//   return (
 
-  return (
+//     <IonModal isOpen={isOpen}>
+//       <IonHeader>
+//         <IonToolbar>
+//           <IonButtons slot="start">
 
-    <IonModal isOpen={isOpen}>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
+//             {/* I think a "close" works better here than the back icon */}
+//             <IonButton onClick={Close}>Close</IonButton>
 
-            {/* I think a "close" works better here than the back icon */}
-            <IonButton onClick={Close}>Close</IonButton>
+//           </IonButtons>
+//         </IonToolbar>
+//       </IonHeader>
+//       <IonContent >
 
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent >
+//         <div className="modal-container">
 
-        <div className="modal-container">
+//           <IonImg src={emoji.file} alt={emoji.name} id="modalImg" />
 
-          <IonImg src={emoji.file} alt={emoji.name} id="modalImg" />
+//           <h1> {name}</h1>
 
-          <h1> {name}</h1>
+//           <IonChip ref={ArrernteChip} id="aChip" onClick={modalName}>Arrernte</IonChip>
+//           <IonChip ref={EnglishChip} onClick={modalName}>English</IonChip>
 
-          <IonChip ref={ArrernteChip} id="aChip" onClick={modalName}>Arrernte</IonChip>
-          <IonChip ref={EnglishChip} onClick={modalName}>English</IonChip>
+//           {/* delete the line breaks and do this with css  */}
+//           <br />
+//           <br />
 
-          {/* delete the line breaks and do this with css  */}
-          <br />
-          <br />
+//           <IonGrid>
+//             <IonCol>
+//               <IonRow>
+//                 <IonIcon name="share-social-outline" className="modal-icon" size="large" /><h4> Share </h4>
+//               </IonRow>
+//               <audio src={emoji.audio} ref={playEvent}></audio>
+//               <IonRow onClick={playAudio} >
+//                 {/* onClick (it's more a toggle than a click event) play audio, change inner color to active yellow*/}
+//                 {isPlaying ? <IonIcon name='play-circle' className="modal-icon" size="large" /> : <IonIcon name='play-circle-outline' className="modal-icon" size="large" />
+//                 }
 
-          <IonGrid>
-            <IonCol>
-              <IonRow>
-                <IonIcon name="share-social-outline" className="modal-icon" size="large" /><h4> Share </h4>
-              </IonRow>
-
-              <IonRow onClick={playAudio}>
-                {/* onClick (it's more a toggle than a click event?) play audio, change inner color to active yellow*/}
-                <IonIcon name='play-circle-outline' className="modal-icon" size="large" />
-                <h4> Play </h4>
-              </IonRow>
-
-            </IonCol>
-          </IonGrid>
-        </div>
-
-      </IonContent>
-    </IonModal >
-
-  )
-}
-// each page
+//                 <h4> Play </h4>
+//               </IonRow>
+//             </IonCol>
+//           </IonGrid>
+//         </div>
+//       </IonContent>
+//     </IonModal >
+//   )
+// }
