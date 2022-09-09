@@ -8,7 +8,14 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonImg
 } from '@ionic/react';
+
+import homeIcon from '../assets/images/homeIcon.png'
+import exclaimIcon from '../assets/images/infoIcon.png'
+import questionIcon from '../assets/images/icon4.png'
+import peopleIcon from '../assets/images/icon5.png'
+
 
 import { useLocation } from 'react-router-dom';
 import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
@@ -19,71 +26,72 @@ interface AppPage {
   iosIcon: string;
   mdIcon: string;
   title: string;
+  image: string
 }
 
 const appPages: AppPage[] = [
   {
     title: 'Home',
     url: '/page/Home',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: homeIcon,
+    mdIcon: homeIcon,
+    image: homeIcon
   },
   {
-    title: 'Outbox',
-    url: '/page/Outbox',
+    title: 'Information',
+    url: '/page/Information',
     iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    mdIcon: paperPlaneSharp,
+    image: exclaimIcon
   },
   {
-    title: 'Favorites',
-    url: '/page/Favorites',
+    title: 'FAQ',
+    url: '/page/Faq',
     iosIcon: heartOutline,
-    mdIcon: heartSharp
+    mdIcon: heartSharp,
+    image: questionIcon
   },
   {
-    title: 'Archived',
-    url: '/page/Archived',
+    title: 'Team',
+    url: '/page/Team',
     iosIcon: archiveOutline,
-    mdIcon: archiveSharp
+    mdIcon: archiveSharp,
+    image: peopleIcon
   },
-  {
-    title: 'Trash',
-    url: '/page/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/page/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
-  }
+
 
 ];
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
 
   return (
-    <IonMenu contentId="main" type="overlay" side="end" >
+    <IonMenu contentId="main" type="overlay" side="end" className="my-custom-menu" >
       <IonContent>
-        <IonList id="inbox-list">
-          {/* put the IndigEmoji Icon here instead of the words "Inbox" */}
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+        {/* <IonList id="sideMenu" className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url}> */}
+
+
+        {/*   <a href="/"><IonImg src={homeIcon} id="home"></IonImg></a> */}
+
+        {/*   <IonImg src={exclaimIcon}></IonImg> */}
+        {/*   <IonImg src={questionIcon}></IonImg> */}
+        {/*   <IonImg src={peopleIcon}></IonImg> */}
+
+        {/* </IonList> */}
+        <IonList id="sideMenu">
+
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={true}>
                 <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                  {/* <IonLabel>{appPage.title}</IonLabel> */}
-                  <IonLabel></IonLabel>
+                  {/* <IonIcon slot="start" ios={appPage.image} md={appPage.image} /> */}
+                  <IonImg src={appPage.image}></IonImg>
                 </IonItem>
               </IonMenuToggle>
             );
           })}
         </IonList>
+
 
       </IonContent>
     </IonMenu>
