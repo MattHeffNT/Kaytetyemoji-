@@ -48,13 +48,13 @@ const ExploreContainer: React.FC<any> = () => {
 
             {/* map emoji images here, then on click open and load modal with larger emoji, translation options, audio, and share button*/}
             {arr.map((emoji: any) => (
-              <IonCol>
+              <IonCol size="3">
                 <IonImg src={emoji.file} onClick={() => { setMyModal({ isOpen: true }); setEmojisData(emoji); }} />
               </IonCol>
             ))}
 
             {/* keep this here so that emojis on the bottom row are gridded correctly */}
-            <IonCol></IonCol>
+            {/* <IonCol></IonCol> */}
 
           </IonRow>
         </IonGrid>
