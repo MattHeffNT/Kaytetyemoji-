@@ -18,6 +18,10 @@ npm install -g @ionic/cli
  
 After that run npm install as usual.
 
+## Android instructions
+
+Features such as the social sharing will not work from just a web server so you will need to install Android/IOS wrappers to be able to use this in your development environment.
+
 To build for Android you will need to use the Ionic/Capacitor CLI and do a few steps:
 
 ```
