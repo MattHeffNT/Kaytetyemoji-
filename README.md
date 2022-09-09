@@ -7,9 +7,9 @@ This is an Ionic/React/TypeScript based recreation of the [IndigEmoji](https://g
 
 ## Install
 
-You will need Android Studio (including all the respective Java libraries, sdks etc) to develop for Android and X-code etc to develop for IOS.
+You will need Android Studio (including all the respective Java libraries, sdks etc) to develop for Android. For IOS you will need X-code (and probably an apple device) with respective libraries for that. 
 
-Ionic has its own <a href='https://ionicframework.com/docs/'>documentation </a> so any Ionic based solutions should be there.
+Ionic has its own <a href='https://ionicframework.com/docs/'>documentation </a> so Ionic install and usage instructions should be sourced there first. 
 
 To install and run this source code you will need to install the Ionic CLI  
 ```
