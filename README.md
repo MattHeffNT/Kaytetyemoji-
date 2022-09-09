@@ -18,6 +18,29 @@ npm install -g @ionic/cli
  
 After that run npm install as usual.
 
+To build for Android you will need to use the Ionic/Capacitor CLI and do a few steps:
+
+```
+ionic capacitor add android
+```
+
+(from the documentation: with each meaningful change, ionic apps must be built into web assets before change can appear on android simulators/devices)
+
+```
+ionic capacitor add android
+```
+
+To serve your app (Android) onto the simulator or device with live reload run:
+
+```
+ionic capacitor run android -l --external
+
+```
+
+The steps are similar for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>
+
+
+
 ## notes for audio (from IndigEmoji src)
 
 Files kept here to be imported into all platforms. These files are not referenced in the codebase.
