@@ -122,14 +122,13 @@ ion-menu::part(container){
 
   width:30%; 
   margin-bottom:5% !important;
-
-
 }
 
 #sideMenu {
   display:grid;
   justify-content: center;
   gap:15px;
+
   /* width:20em; */
 }
 

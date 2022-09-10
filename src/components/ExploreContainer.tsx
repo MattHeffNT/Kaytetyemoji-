@@ -5,10 +5,12 @@ import { useState } from 'react';
 // import Ion components (seperated into two lines for readability)
 import { IonPage, IonContent, IonSearchbar, IonHeader, IonToolbar, IonTitle, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
-import MyModal from './MyModal'
+// import MyModal from './MyModal'
 
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
+import Info from './Info'
+import Home from './Home'
 
 
 interface ContainerProps {
@@ -35,51 +37,17 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
 
   const location = useLocation();
 
-  console.log(name)
-
   return (
 
     < IonContent >
 
 
-      {/* to keep the code clean i should put the other pages in their own component  */}
 
-      {(name == "Home") && <h1>This is Home </h1>}
-      {(name == "Information") && <h1>Info</h1>}
+      {/* render component based on rest */}
+      {(name == "Home") && <Home />}
+      {(name == "Information") && <Info />}
 
 
-
-      {/* ok .....so maybe instead of page conditonals can put a conditional here to render a different container depending on  */}
-      {/* url  */}
-
-      <div className='container'>
-
-        {/*  i think i definitely need to have search bar as seperate component so that it doesn't update state */}
-        {/* of the container.... also maybe put into the toolbar so that it's fixed when user scrolls down*/}
-        <IonSearchbar id="search" value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showClearButton="always" ></IonSearchbar>
-
-        <IonGrid>
-          <IonRow>
-
-            {/* map emoji images here, then on click open and load modal with larger emoji, translation options, audio, and share button*/}
-            {arr.map((emoji: any) => (
-              <IonCol size="3">
-                <IonImg src={emoji.file} onClick={() => { setMyModal({ isOpen: true }); setEmojisData(emoji); }} />
-              </IonCol>
-            ))}
-
-            {/* keep this here so that emojis on the bottom row are gridded correctly */}
-            {/* <IonCol></IonCol> */}
-
-          </IonRow>
-        </IonGrid>
-      </div>
-
-      <MyModal
-        isOpen={myModal.isOpen}
-        onClose={(e: Event) => { setMyModal({ isOpen: false }); return e }}
-        initialData={emojisData}
-      />
 
     </IonContent >
 

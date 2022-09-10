@@ -1,6 +1,4 @@
 import './ExploreContainer.css';
-// import emojis from '../assets/emojis.json'
-// import '../assets/images'
 import { useEffect, useState, useRef } from 'react';
 
 // import Ion components (seperated into two lines for readability)
@@ -15,7 +13,6 @@ import {
 } from '@ionic/react';
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
-// import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 // social sharing library
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing';
@@ -94,7 +91,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
   };
 
   // modal close event handler
-  const Close = (e: any) => {
+  const Close = () => {
     // stop the audio
     setIsPlaying(false);
 
@@ -110,9 +107,9 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
   // social-sharing
   // params @message, @subject, @file, @url
 
-
   const shareButton = async () => {
-    // our json doesn't have this line in front of the base64 so just prepending to be able to use this social share plugin
+    // our json doesn't have this line in front of the base64 so just prepending to be 
+    // able to use this social share plugin
     var prependData = "data:image/png;base64," + emoji.data
     SocialSharing.share(`${emoji.name_arrernte} | ${emoji.name}`, "subject line", prependData)
   };
@@ -120,7 +117,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
   return (
     <IonModal isOpen={isOpen}>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="none">
           <IonButtons slot='start'>
             {/* I think a "close" works better here than the back icon */}
             <IonButton onClick={Close}>Close</IonButton>

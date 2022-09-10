@@ -68,14 +68,6 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay" side="end" className="my-custom-menu" >
       <IonContent>
-        {/* <IonList id="sideMenu" className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url}> */}
-
-
-        {/*   <a href="/"><IonImg src={homeIcon} id="home"></IonImg></a> */}
-
-        {/*   <IonImg src={exclaimIcon}></IonImg> */}
-        {/*   <IonImg src={questionIcon}></IonImg> */}
-        {/*   <IonImg src={peopleIcon}></IonImg> */}
 
         {/* </IonList> */}
         <IonList id="sideMenu">
