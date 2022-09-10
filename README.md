@@ -31,7 +31,13 @@ ionic capacitor add android
 (from the documentation: with each meaningful change, ionic apps must be built into web assets before change can appear on android simulators/devices)
 
 ```
-ionic capacitor add android
+ionic capacitor copy android
+```
+
+Then if you have added any new Android native plugins etc you will need to run:
+
+```
+
 ```
 
 To serve your app (Android) onto the simulator or device with live reload run:
