@@ -198,6 +198,7 @@ http://ionicframework.com/docs/theming/ */
 
   .md body {
     --ion-background-color: #121212;
+    /* --ion-background-color:url('../assets/images/background.png') !important;   */
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #ffffff;
@@ -234,3 +235,20 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 }
+
+/* just using this as reference for now */
+ion-toolbar {
+  --background:url('../assets/images/background.png') !important;  
+}
+
+/* custom edits to place splash image to cover body */
+
+/* .md body { */
+/*     --ion-background-color:url('../assets/images/background.png') !important;   */
+/*   background-size: 20%; */
+
+/* } */
+/* .ios body { */
+/*     --ion-background-color:url('../assets/images/background.png') !important;   */
+/* } */
+
