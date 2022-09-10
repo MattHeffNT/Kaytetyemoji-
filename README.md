@@ -2,7 +2,7 @@
 # KaytejEmoji
 
 
-This is an Ionic/React/TypeScript based recreation of the [IndigEmoji](https://github.com/Indigemoji-Australia/indigemoji-app) app. 
+This is an Ionic(v6)/React/TypeScript based recreation of the [IndigEmoji](https://github.com/Indigemoji-Australia/indigemoji-app) app. 
 
 
 ## Install
@@ -37,7 +37,7 @@ ionic capacitor copy android
 Then if you have added any new Android native plugins etc you will need to run:
 
 ```
-
+npx cap sync
 ```
 
 To serve your app (Android) onto the simulator or device with live reload run:
