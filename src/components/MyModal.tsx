@@ -67,15 +67,20 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     setIsPlaying(true);
 
     // toggle play/ pause
+    // grab previous value (because setting state updates the state)
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
 
+    // check if not the previous value then play and on toggle, pause and reset audio
+    // then remove css class from icon 
     if (!prevValue) {
+
       // play the Emoji audio
       playEvent.current.play();
 
       // change color of play icon to ochre yellow
       icon.classList.add('audio-active');
+
     } else {
       playEvent.current.pause();
       playEvent.current.currentTime = 0;
@@ -84,7 +89,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
     // once audio has finished, set playing back to false and reset play icon style to default state
     playEvent.current.onended = () => {
-      console.log('ended');
       icon.classList.remove('audio-active');
       setIsPlaying(false);
     };
@@ -150,7 +154,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                   className='modal-icon'
                   size='large'
                 />
-                <h4> Share </h4>
+                <h4> share </h4>
               </IonRow>
 
               <audio src={emoji.audio} ref={playEvent}></audio>
@@ -170,7 +174,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                   />
                 )}
 
-                <h4> Play </h4>
+                <h4> play </h4>
               </IonRow>
             </IonCol>
           </IonGrid>
