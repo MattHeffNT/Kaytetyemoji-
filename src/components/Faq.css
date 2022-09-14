@@ -1,0 +1,30 @@
+.container {
+  text-align: left;
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius:2em;
+  padding-top:1em;
+  padding:2.5em;
+}
+
+.container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+.container h1{
+  text-align: left;
+}
+
+.container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+  /* text-align:left !important; */
+  padding-top:5%;
+}
+
+.container a {
+  text-decoration-line: underline;
+}
