@@ -30,7 +30,7 @@ const Home: React.FC<any> = () => {
   /// search function need to wait until all components mounted to then search 
   useEffect(() => {
 
-    const items = Array.from(emojiArray.current.children)
+    const rows = Array.from(emojiArray.current.children)
 
     // listen for search bar input then call function
     searchBar.current.addEventListener('ionInput', handleInput);
@@ -41,23 +41,27 @@ const Home: React.FC<any> = () => {
 
       requestAnimationFrame(() => {
 
-        items.forEach((item: any) => {
+        rows.forEach((col: any) => {
 
-          const emoji = item.firstElementChild
+          const emoji = col.firstElementChild
 
-          const shouldShow = emoji.alt.toLowerCase().indexOf(query) > -1;
+          const shouldShow = emoji.id.toLowerCase().indexOf(query) > -1;
 
+          // maybe can make a css property that gets switched on and off?
           if (shouldShow) {
 
-            item.style = "display:inherit"
-            emoji.style = "display:block"
+            // reset gridded emojis to default style 
+            col.style = "display:flex"
+            emoji.style = "display:initial;"
+            col.style = "flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(3 / var(--ion - grid - columns, 12)) * 100 %); max - width: calc(calc(3 / var(--ion - grid - columns, 12)) * 100 %);"
+          }
 
-          } else {
+          else {
 
-            // don't display other emoji's 
+            // don't display other emoji's when searching 
+            col.style = "flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(3 / var(--ion - grid - columns, 12)) * 100 %); max - width: calc(calc(3 / var(--ion - grid - columns, 12)) * 100 %);"
             emoji.style = "display:none;"
-            item.style = "display:none"
-
+            col.style = "display:none"
           }
 
         });
@@ -71,9 +75,8 @@ const Home: React.FC<any> = () => {
 
       <div className='container'>
 
-        {/*  i think i definitely need to have search bar as seperate component so that it doesn't update state */}
-        {/* of the container.... also maybe put into the toolbar so that it's fixed when user scrolls down*/}
-        <IonSearchbar ref={searchBar} id="search" autocomplete="on" value={searchText} onIonChange={e => setSearchText(e.detail.value!)} show-clear-button="always" ></IonSearchbar>
+        {/* search */}
+        <IonSearchbar ref={searchBar} id="search" value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showCancelButton="focus" animated></IonSearchbar>
 
         <IonGrid>
           <IonRow ref={emojiArray}>
@@ -81,7 +84,7 @@ const Home: React.FC<any> = () => {
             {/* map emoji images here, then on click open and load modal with larger emoji, translation options, audio, and share button*/}
             {arr.map((emoji: any) => (
               <IonCol size="3" ref={emojiColumn}>
-                <IonImg src={emoji.file} alt={emoji.name} onClick={() => { setMyModal({ isOpen: true }); setEmojisData(emoji); }} />
+                <IonImg src={emoji.file} id={emoji.name} onClick={() => { setMyModal({ isOpen: true }); setEmojisData(emoji); }} />
               </IonCol>
             ))}
 
