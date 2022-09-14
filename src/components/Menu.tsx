@@ -45,7 +45,7 @@ const appPages: AppPage[] = [
     image: exclaimIcon
   },
   {
-    title: 'FAQ',
+    title: 'Faq',
     url: '/page/Faq',
     iosIcon: heartOutline,
     mdIcon: heartSharp,
@@ -68,10 +68,8 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay" side="end" className="my-custom-menu" >
       <IonContent>
-
         {/* </IonList> */}
         <IonList id="sideMenu">
-
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={true}>
@@ -83,8 +81,6 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
-
-
       </IonContent>
     </IonMenu>
   );
