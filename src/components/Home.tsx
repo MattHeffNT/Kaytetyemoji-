@@ -52,7 +52,7 @@ const Home: React.FC<any> = () => {
 
             // reset gridded emojis to default style 
             col.style = "display:flex"
-            emoji.style = "display:initial;"
+            emoji.style = "display:inherit;"
             col.style = "flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(3 / var(--ion - grid - columns, 12)) * 100 %); max - width: calc(calc(3 / var(--ion - grid - columns, 12)) * 100 %);"
           }
 
