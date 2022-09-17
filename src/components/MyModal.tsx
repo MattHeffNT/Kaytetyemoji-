@@ -44,14 +44,14 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
       // grab the inactive chip and change its colour to default
       EnglishChip.current.style =
-        'background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)';
+        'background:#646466'
     } else if (languageChoice == 'English') {
       setName(emoji.name);
       e.nativeEvent.srcElement.style = 'background:#f4bd29;';
 
       // grab the inactive chip and change its colour to default
       ArrernteChip.current.style =
-        'background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12)';
+        'background:#646466'
     }
   };
 
@@ -89,6 +89,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
     // once audio has finished, set playing back to false and reset play icon style to default state
     playEvent.current.onended = () => {
+      // console.log('ended');
       icon.classList.remove('audio-active');
       setIsPlaying(false);
     };
@@ -110,7 +111,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
   // social-sharing
   // params @message, @subject, @file, @url
-
   const shareButton = async () => {
     // our json doesn't have this line in front of the base64 so just prepending to be 
     // able to use this social share plugin
