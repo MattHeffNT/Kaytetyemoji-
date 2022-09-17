@@ -15,9 +15,9 @@ const Home: React.FC<any> = () => {
   const [myModal, setMyModal] = useState({ isOpen: false })
 
   // get array of emoji json object keys before using map method
-  const result: any = Object.keys(emojis).map((key) => {
-    return { [key]: emojis[key as keyof typeof emojis] };
-  });
+  // const result: any = Object.keys(emojis).map((key) => {
+  //   return { [key]: emojis[key as keyof typeof emojis] };
+  // });
 
   // variables to map in the component
   var obj: any = emojis
