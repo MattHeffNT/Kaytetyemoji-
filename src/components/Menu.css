@@ -126,16 +126,10 @@ ion-menu::part(container){
 
 #sideMenu {
   display:grid;
-  justify-content: center;
+  /* justify-content: center; */
   gap:15px;
-
-  /* width:20em; */
 }
 
-#sideMenu > ion-img {
-  /* background-color:red; */
-  width:5em !important;
-}
 
 
 
