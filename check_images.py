@@ -1,3 +1,11 @@
+"""
+Script by Sam Lavigne aka Antiboredom https://github.com/antiboredom
+that uses the csv file to generate the paths to the emojis and audio in a json file.
+as well as converts the image to a base64 uri.
+
+"""
+
+
 import glob
 import json
 import os
