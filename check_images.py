@@ -5,7 +5,6 @@ as well as converts the image to a base64 uri.
 
 """
 
-
 import glob
 import json
 import os
@@ -25,7 +24,7 @@ with open("./emojis.csv", "r") as infile:
         item = {
             "name": row["name"],
             "name_arrernte": row["name_arrernte"],
-            "file": row["file"],
+            "file": "../assets/emojis/" + row["file"],
             "data": imgdata,
         }
 
@@ -34,7 +33,7 @@ with open("./emojis.csv", "r") as infile:
         ):
             print("missing %s" % row["audio"])
         else:
-            item["audio"] = row["audio"]
+            item["audio"] = "../assets/audio/" + row["audio"]
         out["emojis"].append(item)
 
 with open("./src/assets/emojis.json", "w") as outfile:
