@@ -12,6 +12,7 @@
     "@capacitor/haptics": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
+    "@ionic-native/splash-screen": "^4.20.0",
     "@ionic/react": "^6.2.6",
     "@ionic/react-router": "^6.2.6",
     "@reacticons/ionicons": "^6.0.3",
