@@ -1,13 +1,37 @@
-#homeIcon {
-  width:35%; 
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  margin-left:-1em;
-}
-
 /* get rid of material design shadow on header */
 ion-header::after {
-  background: none !important;
+    background: none !important;
+}
+
+/* this is the container where the logo in the toolbar sits */
+ion-item {
+    /* --background: var(--background); */
+    /* width: 50%; */
+    text-align: center;
+
+    /* now need to reduce the width while keeping image width */
+}
+
+ion-title {
+    text-align: center;
+    /* background: blue; */
+}
+
+#home-icon-button {
+    height: 6em;
+    width: 8rem;
+    text-align: center;
+    margin-left: -2em;
+    /* just need to remove the ripple bullshit   */
+}
+
+#homeIcon {
+    width: 100px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    /* margin-left: -5em; */
+    height: 10em !important;
+    text-align: center;
 }
 /* ion-toolbar { */
 /*   --ion-toolbar-background:none; */
