@@ -33,6 +33,8 @@ const Page: React.FC = () => {
                         {/* side menu hamburger button  */}
                         <IonMenuButton />
                     </IonButtons>
+
+                    {/* Logo/Icon   */}
                     <IonButtons slot="start">
                         {/* side menu hamburger button  */}
                         <IonButton
@@ -50,10 +52,6 @@ const Page: React.FC = () => {
                 <IonHeader collapse="condense">
                     <IonToolbar></IonToolbar>
                 </IonHeader>
-
-                {/* component could make this a conditonal...so depending on what url input is called, then call a different 
-        component? */}
-
                 <ExploreContainer name={name} />
             </IonContent>
         </IonPage>

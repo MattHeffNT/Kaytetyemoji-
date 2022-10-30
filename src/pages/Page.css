@@ -22,7 +22,7 @@ ion-title {
     width: 8rem;
     text-align: center;
     margin-left: -2em;
-    /* just need to remove the ripple bullshit   */
+    --ripple-color: transparent;
 }
 
 #homeIcon {

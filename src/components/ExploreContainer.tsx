@@ -4,7 +4,8 @@ import './styles/ExploreContainer.css';
 
 // import Ion components (seperated into two lines for readability)
 import { IonContent } from '@ionic/react';
-
+// import { SplashScreen } from '@awesome-cordova-plugins/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 // import { useParams } from 'react-router';
 // import { useLocation } from 'react-router-dom';
 import Info from './Info';
@@ -17,14 +18,13 @@ interface ContainerProps {
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-    // const location = useLocation();
     return (
         <IonContent>
             {/* render component based on url */}
-            {name == 'Home' && <Home />}
-            {name == 'Information' && <Info />}
-            {name == 'Faq' && <Faq />}
-            {name == 'Team' && <Team />}
+            {name === 'Home' && <Home />}
+            {name === 'Information' && <Info />}
+            {name === 'Faq' && <Faq />}
+            {name === 'Team' && <Team />}
         </IonContent>
     );
 };

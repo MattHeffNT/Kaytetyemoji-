@@ -31,8 +31,8 @@ const Team: React.FC<any> = () => {
                     inDigiMOB supported a team of senior artists and digital
                     mentors to work with these young artists to realise their
                     ideas. Leigh Harris and ingeous studios developed this app.
-                    We also thank the generous support of the Johnston
-                    Foundation.
+                    Matthew Heffernan (Luritja). We also thank the generous
+                    support of the Johnston Foundation.
                 </p>
                 <p>
                     Emoji advisers: Veronica Dobson Perrurle, Kathleen Wallace

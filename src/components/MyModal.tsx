@@ -11,21 +11,20 @@ import {
     IonRow,
     IonCol,
 } from '@ionic/react';
+
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
-
 // social sharing library
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing';
 
 const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
-    const emoji = initialData;
-    var [name, setName]: any = useState(emoji.name_arrernte);
-
     const ArrernteChip = useRef<any>();
     const EnglishChip = useRef<any>();
-    const [isPlaying, setIsPlaying] = useState(false);
-
+    const Share = useRef<any>();
     const playEvent = useRef<any>();
+    const emoji = initialData;
+    var [name, setName]: any = useState(emoji.name_arrernte);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     // Set the default title to arrernte when modal opened
     useEffect(() => {
@@ -38,7 +37,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
         // will obviously need to change these names when populating with Katyetye
         // will also need to add fade animation to match IndigEmoji
-        if (languageChoice == 'Arrernte') {
+        if (languageChoice === 'Arrernte') {
             setName(emoji.name_arrernte);
             e.nativeEvent.srcElement.style = 'background:#f4bd29;';
 
@@ -105,11 +104,16 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         onClose();
     };
 
-    // social-sharing
     // params @message, @subject, @file, @url
     const shareButton = async () => {
+        // button press animation for share button
+        setTimeout(() => {
+            Share.current.classList.remove('modal-icon-pressed');
+        }, 260);
+        Share.current.classList.add('modal-icon-pressed');
+
         // our json doesn't have this line in front of the base64 so just prepending to be
-        // able to use this social share plugin
+        // able to use this social share plugin. We will also style the button when it's pressed
         var prependData = 'data:image/png;base64,' + emoji.data;
         SocialSharing.share(
             `${emoji.name_arrernte} | ${emoji.name}`,
@@ -147,7 +151,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
                     <IonGrid>
                         <IonCol>
-                            <IonRow onClick={shareButton}>
+                            <IonRow ref={Share} onClick={shareButton}>
                                 {/* social share  */}
                                 <IonIcon
                                     name="share-social-outline"

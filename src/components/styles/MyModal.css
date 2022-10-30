@@ -58,3 +58,8 @@ ion-chip {
     color: #f2bd29;
     transition: -1s;
 }
+
+.modal-icon-pressed {
+    color: #f2bd29;
+    transition: 0.25s;
+}

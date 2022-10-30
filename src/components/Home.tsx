@@ -74,15 +74,15 @@ const Home: React.FC<any> = () => {
                     id="search"
                     value={searchText}
                     onIonChange={(e) => setSearchText(e.detail.value!)}
-                    showCancelButton="focus"
-                    animated
+                    searchIcon="none"
+                    showClearButton="always"
                 ></IonSearchbar>
 
                 <IonGrid>
                     <IonRow ref={emojiArray}>
                         {/* map emoji images here, then on click open and load modal with larger emoji, translation options, audio, and share button*/}
-                        {arr.map((emoji: any) => (
-                            <IonCol size="3" ref={emojiColumn}>
+                        {arr.map((emoji: any, index: number) => (
+                            <IonCol size="3" ref={emojiColumn} key={index}>
                                 <IonImg
                                     src={emoji.file}
                                     id={emoji.name}

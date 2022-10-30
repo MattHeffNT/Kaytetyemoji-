@@ -88,6 +88,7 @@ const Slides: React.FC<any> = ({ isOpen, onClose }) => {
                                         id="drawing"
                                     />
                                 </IonCol>
+                                {/* Werte slide  */}
                                 <IonCol>
                                     <div className="slide-container">
                                         <h1>Werte!</h1>
