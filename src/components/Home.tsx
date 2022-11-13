@@ -1,7 +1,6 @@
 import './styles/ExploreContainer.css';
 import emojis from '../assets/emojis.json';
 import { useState, useEffect, useRef } from 'react';
-
 // import Ion components (seperated into two lines for readability)
 import {
     IonContent,
@@ -11,25 +10,33 @@ import {
     IonRow,
     IonCol,
 } from '@ionic/react';
-
 import MyModal from './MyModal';
 
 const Home: React.FC<any> = () => {
     const [emojisData, setEmojisData] = useState([]);
     const [searchText, setSearchText] = useState('');
-
     const [myModal, setMyModal] = useState({ isOpen: false });
 
     // variables to map in the component
     var obj: any = emojis;
     var arr: any = obj.emojis;
-
     const searchBar: any = useRef();
     const emojiColumn: any = useRef();
     const emojiArray: any | undefined = useRef();
 
-    /// search function need to wait until all components mounted to then search (i should chuck the search in its own component)
+    /// search function need to wait until all components mounted to then search
     useEffect(() => {
+        // *** change searchbar colors to lighter if app is in darkmode ***
+        const element = document.querySelector('body')!;
+        // get the background colour (this checks if we're in dark mode)
+        const style = getComputedStyle(element);
+
+        // got to make sure the spaces from comma to the number are spaced otherwise this won't
+        // return the accurate value
+        if (style.background == 'rgb(18, 18, 18)') {
+            searchBar.current.style = 'border:1px solid lightgrey';
+        }
+
         const rows = Array.from(emojiArray.current.children);
 
         // listen for search bar input then call function
@@ -69,7 +76,6 @@ const Home: React.FC<any> = () => {
             <div className="container">
                 {/* search */}
                 <IonSearchbar
-                    // mode="ios"
                     ref={searchBar}
                     id="search"
                     value={searchText}
