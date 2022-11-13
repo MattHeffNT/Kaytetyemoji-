@@ -1,6 +1,5 @@
 import './styles/MyModal.css';
 import { useEffect, useState, useRef } from 'react';
-
 // import Ion components (seperated into two lines for readability)
 import {
     IonContent,
@@ -14,6 +13,7 @@ import {
 
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
+
 // social sharing library
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing';
 
@@ -21,6 +21,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     const ArrernteChip = useRef<any>();
     const EnglishChip = useRef<any>();
     const Share = useRef<any>();
+    const audioRow = useRef<any>();
     const playEvent = useRef<any>();
     const emoji = initialData;
     var [name, setName]: any = useState(emoji.name_arrernte);
@@ -40,10 +41,9 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         if (languageChoice === 'Arrernte') {
             setName(emoji.name_arrernte);
             e.nativeEvent.srcElement.style = 'background:#f4bd29;';
-
             // grab the inactive chip and change its colour to default
             EnglishChip.current.style = 'background:#646466';
-        } else if (languageChoice == 'English') {
+        } else if (languageChoice === 'English') {
             setName(emoji.name);
             e.nativeEvent.srcElement.style = 'background:#f4bd29;';
 
@@ -58,9 +58,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     audio.controls = true;
 
     //play audio and function so that the colour of the play button stays yellow until end of audio
-    const playAudio = (e: any) => {
-        const icon = e.currentTarget.children[0];
-
+    const playAudio = () => {
         setIsPlaying(true);
 
         // toggle play/ pause
@@ -75,17 +73,17 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
             playEvent.current.play();
 
             // change color of play icon to ochre yellow
-            icon.classList.add('audio-active');
+            audioRow.current.classList.add('audio-active');
         } else {
             playEvent.current.pause();
             playEvent.current.currentTime = 0;
-            icon.classList.remove('audio-active');
+            audioRow.current.classList.remove('audio-active');
         }
 
         // once audio has finished, set playing back to false and reset play icon style to default state
         playEvent.current.onended = () => {
             // console.log('ended');
-            icon.classList.remove('audio-active');
+            audioRow.current.classList.remove('audio-active');
             setIsPlaying(false);
         };
     };
@@ -104,7 +102,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         onClose();
     };
 
-    // params @message, @subject, @file, @url
     const shareButton = async () => {
         // button press animation for share button
         setTimeout(() => {
@@ -115,6 +112,8 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         // our json doesn't have this line in front of the base64 so just prepending to be
         // able to use this social share plugin. We will also style the button when it's pressed
         var prependData = 'data:image/png;base64,' + emoji.data;
+
+        // params @message, @subject, @file, @url
         SocialSharing.share(
             `${emoji.name_arrernte} | ${emoji.name}`,
             '',
@@ -162,7 +161,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                             </IonRow>
 
                             <audio src={emoji.audio} ref={playEvent}></audio>
-                            <IonRow onClick={playAudio}>
+                            <IonRow ref={audioRow} onClick={playAudio}>
                                 {/* onClick (it's more a toggle than a click event) play audio, change inner color to active yellow*/}
                                 {isPlaying ? (
                                     <IonIcon
@@ -177,7 +176,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                                         size="large"
                                     />
                                 )}
-
                                 <h4> play </h4>
                             </IonRow>
                         </IonCol>
