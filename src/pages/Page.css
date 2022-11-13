@@ -8,13 +8,11 @@ ion-item {
     /* --background: var(--background); */
     /* width: 50%; */
     text-align: center;
-
     /* now need to reduce the width while keeping image width */
 }
 
 ion-title {
     text-align: center;
-    /* background: blue; */
 }
 
 #home-icon-button {
@@ -29,16 +27,9 @@ ion-title {
     width: 100px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    /* margin-left: -5em; */
     height: 10em !important;
     text-align: center;
 }
-/* ion-toolbar { */
-/*   --ion-toolbar-background:none; */
-/*   --ion-toolbar-border-color:none; */
-
-/* } */
-
 /* #root { */
 /*   background-image:url('../assets/images/background.png') !important; */
 /* } */
