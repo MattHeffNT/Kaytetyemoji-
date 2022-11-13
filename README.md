@@ -44,7 +44,6 @@ To serve your app (Android) onto the simulator or device with live reload run:
 
 ```
 ionic capacitor run android -l --external
-
 ```
 
 The steps are similar for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>
