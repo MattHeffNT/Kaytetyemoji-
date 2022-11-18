@@ -1,6 +1,6 @@
 import './styles/ExploreContainer.css';
 import emojis from '../assets/emojis.json';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ChangeEvent } from 'react';
 // import Ion components (seperated into two lines for readability)
 import {
     IonContent,
@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 import MyModal from './MyModal';
 
-const Home: React.FC<any> = () => {
+const Home: React.FC = () => {
     const [emojisData, setEmojisData] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [myModal, setMyModal] = useState({ isOpen: false });
@@ -24,26 +24,32 @@ const Home: React.FC<any> = () => {
     const emojiColumn: any = useRef();
     const emojiArray: any | undefined = useRef();
 
-    /// search function need to wait until all components mounted to then search
+    /// search function need to wait until all components mounted to then search (i should chuck the search in its own component)
     useEffect(() => {
-        // *** change searchbar colors to lighter if app is in darkmode ***
-        const element = document.querySelector('body')!;
-        // get the background colour (this checks if we're in dark mode)
-        const style = getComputedStyle(element);
+        // // *** change searchbar colors to lighter if app is in darkmode ***
+        // const element = document.querySelector('body')!;
 
-        // got to make sure the spaces from comma to the number are spaced otherwise this won't
-        // return the accurate value
-        if (style.background == 'rgb(18, 18, 18)') {
-            searchBar.current.style = 'border:1px solid lightgrey';
-        }
+        // // get the background colour (this checks if we're in dark mode)
+        // const style = getComputedStyle(element);
+
+        // // got to make sure the spaces from comma to the number are spaced otherwise this won't
+        // // return the accurate value
+        // if (style.background === 'rgb(18, 18, 18)') {
+        //     // searchBar.current.style = 'border:1px solid lightgrey';
+        //     console.log('dark mode');
+        // }
 
         const rows = Array.from(emojiArray.current.children);
 
         // listen for search bar input then call function
         searchBar.current.addEventListener('ionInput', handleInput);
 
-        function handleInput(event: any) {
-            const query = event.target.value.toLowerCase();
+        function handleInput(
+            event: React.MouseEvent<HTMLInputElement, ChangeEvent>
+        ) {
+            const query = (
+                event.target as HTMLInputElement
+            ).value.toLowerCase();
 
             requestAnimationFrame(() => {
                 rows.forEach((col: any) => {
