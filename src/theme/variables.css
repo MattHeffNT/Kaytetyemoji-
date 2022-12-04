@@ -85,9 +85,6 @@ http://ionicframework.com/docs/theming/ */
     /* make search container border light if app in dark mode */
     ion-searchbar {
         border: 1px solid lightgrey !important;
-        text-align: center;
-        width: 100%;
-        height: 3rem;
     }
 
     body {
@@ -246,6 +243,19 @@ ion-toolbar {
     --background: url('../assets/images/background.png') !important;
 }
 
+ion-searchbar {
+    margin: auto;
+    width: 100%;
+    z-index: 10;
+    border: 1px solid black;
+    height: 2.8rem;
+    --padding-left: none !important;
+    --pading-inline-start: none;
+    --pading-inline-end: none;
+    text-align: center;
+    --box-shadow: none !important;
+   height: 3rem;
+}
 /* custom edits to place splash image to cover body */
 
 /* .md body { */
