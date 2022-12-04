@@ -26,18 +26,9 @@ const Home: React.FC = () => {
 
     /// search function need to wait until all components mounted to then search (i should chuck the search in its own component)
     useEffect(() => {
-        // // *** change searchbar colors to lighter if app is in darkmode ***
-        // const element = document.querySelector('body')!;
 
-        // // get the background colour (this checks if we're in dark mode)
-        // const style = getComputedStyle(element);
-
-        // // got to make sure the spaces from comma to the number are spaced otherwise this won't
-        // // return the accurate value
-        // if (style.background === 'rgb(18, 18, 18)') {
-        //     // searchBar.current.style = 'border:1px solid lightgrey';
-        //     console.log('dark mode');
-        // }
+    // need to grab details from HOME CSS and paste into the theme css to flatten
+    //search input 
 
         const rows = Array.from(emojiArray.current.children);
 
