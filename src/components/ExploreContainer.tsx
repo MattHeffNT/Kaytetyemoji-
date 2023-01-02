@@ -1,13 +1,7 @@
 import './styles/ExploreContainer.css';
-// import emojis from '../assets/emojis.json'
-// import { useState } from 'react';
 
 // import Ion components (seperated into two lines for readability)
 import { IonContent } from '@ionic/react';
-// import { SplashScreen } from '@awesome-cordova-plugins/splash-screen';
-// import { SplashScreen } from '@ionic-native/splash-screen';
-// import { useParams } from 'react-router';
-// import { useLocation } from 'react-router-dom';
 import Info from './Info';
 import Home from './Home';
 import Faq from './Faq';
