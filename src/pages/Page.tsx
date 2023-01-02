@@ -1,30 +1,24 @@
 import {
     IonButtons,
     IonButton,
-    // IonItem,
     IonContent,
     IonHeader,
     IonMenuButton,
     IonPage,
-    IonTitle,
     IonImg,
     IonToolbar,
-    // IonRouterLink,
 } from '@ionic/react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
 import homeIcon from '../assets/images/start_header_no.png';
-// import background from '../assets/images/background.png';
-// import Home from '../components/Home';
-// import { useState } from 'react';
+import { SplashScreen } from '@awesome-cordova-plugins/splash-screen';
 
-// import { Redirect, Route } from 'react-router-dom';
 
+// SplashScreen.show();
 const Page: React.FC = () => {
     // this grabs the link name/title and puts it as  the page title
     var { name } = useParams<{ name: string }>();
-
     return (
         <IonPage>
             <IonHeader id="header">
