@@ -73,23 +73,6 @@ const Home: React.FC = () => {
     []
   );
 
-  // enable the hardware back button to close the modal
-  useEffect(() => {
-    if (myModal.isOpen) {
-      const backButtonHandler = (e: any) => {
-        e.detail.register(100, () => {
-          console.log('event listener added');
-          setMyModal({ isOpen: false });
-        });
-      };
-      document.addEventListener('ionBackButton', backButtonHandler);
-
-      return () => {
-        document.removeEventListener('ionBackButton', backButtonHandler);
-      };
-    }
-  }, [myModal.isOpen]);
-
   return (
     <IonContent>
       <div className="container">
