@@ -111,7 +111,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
   // enable the hardware back button to close the modal
   useEffect(() => {
     if (isOpen) {
-      console.log('modal opened');
       const backButtonHandler = (e: any) => {
         e.detail.register(100, () => {
           console.log('event listener added');
