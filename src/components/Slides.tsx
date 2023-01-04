@@ -13,18 +13,18 @@ import { IonGrid, IonCol, IonRow } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
 import './styles/Slides.css';
 import '../theme/variables.css';
+import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/';
 
 // Optional parameters to pass to the swiper instance.
 // See https://swiperjs.com/swiper-api for valid options.
 
-// ok so... i might just chuck the slide component inside another modal
-// that way we can get the same animation when we open it.
-
 const Slides: React.FC<any> = ({ isOpen, onClose }) => {
+    SplashScreen.show();
+
     const slideOpts = {
         // arrays start at 0 remember, so 0 is the first one lol
         initialSlide: 0,
-        speed: 400,
+        speed: 200,
     };
     return (
         <IonModal isOpen={isOpen}>
@@ -61,12 +61,11 @@ const Slides: React.FC<any> = ({ isOpen, onClose }) => {
                                         <h1>Indigemoji</h1>
                                         <strong>
                                             <p>
-                                                {' '}
                                                 Emoji nhenhe-areye arrwekele
                                                 anthurre Australia-kenhe.
                                                 Tyerretye Arrernte-areye itnenhe
                                                 mpwareke, Arrernte-kenhe
-                                                apmerenge{' '}
+                                                apmerenge
                                             </p>
                                         </strong>
                                         <p>
@@ -132,6 +131,7 @@ const Slides: React.FC<any> = ({ isOpen, onClose }) => {
                                     />
                                 </IonCol>
                                 <IonCol>
+                                    {/* "Tyerrentye Slide" */}
                                     <div className="slide-container">
                                         <strong>
                                             <p>
@@ -154,6 +154,7 @@ const Slides: React.FC<any> = ({ isOpen, onClose }) => {
                         </IonGrid>
                     </IonSlide>
                     <IonSlide>
+                        {/* "Antherreme slide" */}
                         <div className="slide-container">
                             <IonImg
                                 src="../assets/screen3_header.png"
