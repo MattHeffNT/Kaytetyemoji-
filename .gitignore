@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # notes from chats with project team
-./notes.md
+/notes.md
 
 # dependencies
 /node_modules
@@ -13,6 +13,7 @@
 
 # production
 /build
+/android
 
 # misc
 .DS_Store
