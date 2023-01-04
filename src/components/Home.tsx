@@ -1,11 +1,10 @@
 import './styles/ExploreContainer.css';
 import emojis from '../assets/emojis.json';
-import { useState, useEffect, useRef, useMemo, ChangeEvent } from 'react';
-
+import { useState, useEffect, useRef, useMemo, useCallback, ChangeEvent } from 'react';
+// import { useLocation } from 'react-router';
 // import Ion components (seperated into two lines for readability)
 import { IonContent, IonSearchbar, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
 import MyModal from './MyModal';
-// import Search from './Search';
 
 const Home: React.FC = () => {
   const [emojisData, setEmojisData] = useState([]);
@@ -18,13 +17,9 @@ const Home: React.FC = () => {
   const searchBar: any = useRef();
   const emojiColumn: any = useRef();
   const emojiArray: any | undefined = useRef();
-  // const emojiArray = useRef<HTMLIonRowElement>(null);
-  /// search function need to wait until all components mounted to then search (i should chuck the search in its own component)
-  //
-  useEffect(() => {
-    // need to grab details from HOME CSS and paste into the theme css to flatten
-    //search input
 
+  // search bar
+  useEffect(() => {
     const rows = Array.from(emojiArray.current.children);
 
     // listen for search bar input then call function
@@ -58,22 +53,42 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  // map emojis to home screen and send data to modal component on click
-  const emojiElements = useMemo(() => {
-    return arr.map((emoji: any, index: number) => (
-      <IonCol size="3" ref={emojiColumn} key={index}>
-        <IonImg
-          src={emoji.file}
-          id={emoji.name}
-          className="emoji"
-          onClick={() => {
-            setMyModal({ isOpen: true });
-            setEmojisData(emoji);
-          }}
-        />
-      </IonCol>
-    ));
-  }, [arr, emojiColumn]);
+  // map the emojis to the homescreen and pass values onto modal on click
+  const emojiElements = useCallback(
+    useMemo(() => {
+      return arr.map((emoji: any, index: number) => (
+        <IonCol size="3" ref={emojiColumn} key={index}>
+          <IonImg
+            src={emoji.file}
+            id={emoji.name}
+            className="emoji"
+            onClick={() => {
+              setMyModal({ isOpen: true });
+              setEmojisData(emoji);
+            }}
+          />
+        </IonCol>
+      ));
+    }, [arr, emojiColumn]),
+    []
+  );
+
+  // enable the hardware back button to close the modal
+  useEffect(() => {
+    if (myModal.isOpen) {
+      const backButtonHandler = (e: any) => {
+        e.detail.register(100, () => {
+          console.log('event listener added');
+          setMyModal({ isOpen: false });
+        });
+      };
+      document.addEventListener('ionBackButton', backButtonHandler);
+
+      return () => {
+        document.removeEventListener('ionBackButton', backButtonHandler);
+      };
+    }
+  }, [myModal.isOpen]);
 
   return (
     <IonContent>
@@ -87,7 +102,6 @@ const Home: React.FC = () => {
           searchIcon="none"
           showClearButton="always"
         ></IonSearchbar>
-
         <IonGrid>
           <IonRow ref={emojiArray}>{emojiElements}</IonRow>
         </IonGrid>
