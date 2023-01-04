@@ -108,6 +108,24 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     SocialSharing.share(`${emoji.name_arrernte} | ${emoji.name}`, '', prependData);
   };
 
+  // enable the hardware back button to close the modal
+  useEffect(() => {
+    if (isOpen) {
+      console.log('modal opened');
+      const backButtonHandler = (e: any) => {
+        e.detail.register(100, () => {
+          console.log('event listener added');
+          Close();
+        });
+      };
+      document.addEventListener('ionBackButton', backButtonHandler);
+      return () => {
+        document.removeEventListener('ionBackButton', backButtonHandler);
+        onClose();
+      };
+    }
+  }, [onClose]);
+
   return (
     <IonModal isOpen={isOpen}>
       <IonHeader>
