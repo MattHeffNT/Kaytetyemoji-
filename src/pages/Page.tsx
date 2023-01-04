@@ -12,9 +12,7 @@ import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
 import homeIcon from '../assets/images/start_header_no.png';
-// import { SplashScreen } from '@awesome-cordova-plugins/splash-screen';
 
-// SplashScreen.show();
 const Page: React.FC = () => {
   // this grabs the link name/title and puts it as  the page title
   var { name } = useParams<{ name: string }>();
