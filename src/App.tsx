@@ -1,9 +1,4 @@
-import {
-    IonApp,
-    IonRouterOutlet,
-    IonSplitPane,
-    setupIonicReact,
-} from '@ionic/react';
+import { IonApp, IonLoading, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
@@ -28,27 +23,40 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { useState } from 'react';
+
 setupIonicReact();
 
 const App: React.FC = () => {
-    return (
-        <IonApp>
-            <IonReactRouter>
-                <IonSplitPane contentId="main">
-                    <Menu />
-                    <IonRouterOutlet id="main">
-                        <Route path="/" exact={true}>
-                            <Redirect to="/page/Home" />
-                        </Route>
+  const [showLoading, setShowLoading] = useState(true);
+  setTimeout(() => {
+    setShowLoading(false);
+  }, 2000);
 
-                        <Route path="/page/:name" exact={true}>
-                            <Page />
-                        </Route>
-                    </IonRouterOutlet>
-                </IonSplitPane>
-            </IonReactRouter>
-        </IonApp>
-    );
+  return (
+    <IonApp>
+      <IonLoading
+        isOpen={showLoading}
+        onDidDismiss={() => setShowLoading(false)}
+        message={'Loading...'}
+        duration={5000}
+      />
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonRouterOutlet id="main">
+            <Route path="/" exact={true}>
+              <Redirect to="/page/Home" />
+            </Route>
+
+            <Route path="/page/:name" exact={true}>
+              <Page />
+            </Route>
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
+  );
 };
 
 export default App;
