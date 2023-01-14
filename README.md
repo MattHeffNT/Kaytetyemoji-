@@ -49,6 +49,7 @@ ionic capacitor run android -l --external
 The steps are similar for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>
 
 
+- Android and IOS branches to be pushed to respective stores
 
 ## notes for audio (from IndigEmoji src)
 
