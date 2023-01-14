@@ -2,5 +2,15 @@
   "appId": "io.ionic.starter",
   "appName": "KatijEmoji",
   "webDir": "build",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3500,
+      "launchAutoHide": true
+    }
+  },
+  "appIcon": "public/assets/icon",
+  "splash": {
+    "image": "public/assets/splash"
+  }
 }
