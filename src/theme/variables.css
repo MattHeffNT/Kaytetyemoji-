@@ -240,7 +240,7 @@ http://ionicframework.com/docs/theming/ */
 /* just using this as reference for now */
 ion-toolbar {
     /* --background; */
-    --background: url('../assets/images/background.png') !important;
+    --background: url('../assets/images/background.png') center/97% !important;
 }
 
 ion-searchbar {
@@ -254,8 +254,9 @@ ion-searchbar {
     --pading-inline-end: none;
     text-align: center;
     --box-shadow: none !important;
-   height: 3rem;
+    height: 3rem;
 }
+
 /* custom edits to place splash image to cover body */
 
 /* .md body { */
