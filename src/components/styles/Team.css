@@ -1,0 +1,7 @@
+.teamImages {
+    padding: 1em !important;
+}
+.teamImages ion-img {
+    margin-bottom: 1em !important;
+    height: 10rem;
+}
