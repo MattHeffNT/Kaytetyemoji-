@@ -58,6 +58,7 @@ ion-menu.md ion-item.selected ion-icon {
 
 ion-menu.md ion-item ion-icon {
     color: #616e7e;
+    /* color: #1e1e1e; */
 }
 
 ion-menu.md ion-item ion-label {
@@ -131,4 +132,9 @@ ion-menu::part(container) {
     /* justify-content: center; */
     gap: 15px;
     justify-items: center;
+}
+
+/* THIS IS ONLY FOR NOW CHANGE FOR FINAL WHEN OTHER ICONS HAVE DARK MODE OPTION  */
+#sideMenu .modal-icon {
+    stroke: black !important;
 }
