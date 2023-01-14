@@ -4,25 +4,15 @@
     justify-items: center;
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 10%;
-    /* margin-top: -2em; */
-    /* bottom: 0px; */
-}
-
-.scroll_lock {
-    overflow-y: hidden !important;
+    padding-bottom: 15%;
 }
 
 #welcomeIcon {
-    /* margin: 0 auto; */
-    margin-top: -10em;
-    width: 10rem;
-    position: fixed;
-    height: 10rem;
-    /* margin-left:20em; */
-    background: red;
-    font-size: 2.5rem;
-    /* background-color:red; */
+    margin: auto;
+    margin-top: -5em;
+    width: 20rem;
+    height: 20rem;
+    margin-bottom: -2rem;
 }
 
 .swiper-pagination.swiper-pagination-bullets {
@@ -30,18 +20,12 @@
     padding-bottom: 2em;
     position: fixed;
     bottom: 0px;
-    /* overflow-y: auto; */
 }
 
 #drawing {
-    /* margin-bottom:10em; */
-    display: grid;
+    margin: auto;
     width: 20em;
     padding-bottom: 1%;
-    height: 20em;
-    /* margin-top: -1em; */
+    height: 45vh;
+    object-fit: cover;
 }
-
-/* #AusMap { */
-/*     width: 100%; */
-/* } */
