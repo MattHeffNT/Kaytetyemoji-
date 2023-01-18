@@ -1,7 +1,7 @@
 .container {
     text-align: center;
     position: absolute;
-    /* padding:0.5em; */
+    padding: 1.5rem;
     /* background: white; */
     left: 0;
     right: 0;
@@ -23,25 +23,16 @@
     text-decoration: none;
 }
 
-/* this mostly for all the emojis */
-/* ion-img { */
-/* width: 4em; */
-/* background: red; */
-/* } */
+.resetGrid {
+    display: none;
+    flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%);
+    width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%);
+    max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%);
+}
 
-/* search bar style */
-/* .container #search { */
-/*     margin: auto; */
-/*     width: 100%; */
-/*     z-index: 10; */
-/*     border: 1px solid black; */
-/*     height: 2.8rem; */
-/*     --padding-left: none !important; */
-/*     --pading-inline-start: none; */
-/*     --pading-inline-end: none; */
-/*     text-align: center; */
-/*     --box-shadow: none; */
-/* } */
+.resetEmojis {
+    display: inherit;
+}
 
 /* modal styles   */
 #modalImg {
