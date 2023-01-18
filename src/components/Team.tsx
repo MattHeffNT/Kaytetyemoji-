@@ -8,7 +8,7 @@ import './styles/Team.css';
 const Team: React.FC<any> = () => {
     return (
         <IonContent>
-            <div className="container">
+            <div className="teams-container">
                 <p>
                     <strong>
                         Arne-nhenhe-areye arrekantherre ileme anwerne-akerte, altyerre, arne,
