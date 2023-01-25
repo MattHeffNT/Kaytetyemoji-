@@ -28,17 +28,17 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     const modalName = (e: any) => {
         const languageChoice = e.nativeEvent.srcElement.innerText;
 
-        // will obviously need to change these names when populating with Katyetye
-        // will also need to add fade animation to match IndigEmoji
+        // will need to change these names when populating with Katyetye
         if (languageChoice === 'Arrernte') {
             setName(emoji.name_arrernte);
-            e.nativeEvent.srcElement.style = 'background:#f4bd29;';
+            // if arrernte chosen, change to ochre yellow
+            ArrernteChip.current.style = 'background:#f4bd29;';
             // grab the inactive chip and change its colour to default
             EnglishChip.current.style = 'background:#646466';
         } else if (languageChoice === 'English') {
             setName(emoji.name);
-            e.nativeEvent.srcElement.style = 'background:#f4bd29;';
-
+            //if english chosen, change english to ochre yellow
+            EnglishChip.current.style = 'background:#f4bd29;';
             // grab the inactive chip and change its colour to default
             ArrernteChip.current.style = 'background:#646466';
         }
@@ -62,7 +62,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         if (!prevValue) {
             // play the Emoji audio
             playEvent.current.play();
-
             // change color of play icon to ochre yellow
             audioRow.current.classList.add('audio-active');
         } else {
@@ -70,7 +69,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
             playEvent.current.currentTime = 0;
             audioRow.current.classList.remove('audio-active');
         }
-
         // once audio has finished, set playing back to false and reset play icon style to default state
         playEvent.current.onended = () => {
             audioRow.current.classList.remove('audio-active');
