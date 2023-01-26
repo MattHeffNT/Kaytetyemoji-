@@ -13,6 +13,9 @@
 
 # production
 /build
+# for main branch
+/android
+
 
 # misc
 .DS_Store
