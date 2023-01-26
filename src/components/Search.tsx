@@ -40,7 +40,6 @@ const Search: React.FC<SearchProps> = ({ setSearchText, emojiArray }) => {
     return (
         <IonSearchbar
             ref={searchBar}
-            // OnIonChange={(e) => setSearchText(e.detail.value!)}
             onIonChange={(e) => setSearchText(e.detail.value!)}
             placeholder="Search"
             debounce={1000}

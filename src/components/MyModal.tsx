@@ -80,19 +80,17 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     const Close = () => {
         // stop the audio
         setIsPlaying(false);
-
         // set timer on modal so that you don't see the name of the emoji change straight away when you close it
         setTimeout(() => {
             setName(emoji.name_arrernte);
         }, 200);
-
         // close the modal
         onClose();
     };
 
     let lastCalled = 0;
     const shareButton = async () => {
-        // add debounce
+        // debounce function so that user can't spam share button
         const currentTime = Date.now();
         if (currentTime - lastCalled < 1000) {
             // delay of 1000 ms
