@@ -1,13 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import {
-    useIonViewWillEnter,
-    IonModal,
-    IonToolbar,
-    IonButtons,
-    IonContent,
-    IonButton,
-    IonImg,
-} from '@ionic/react';
+import { useEffect, useRef } from 'react';
+import { IonModal, IonToolbar, IonButtons, IonContent, IonButton, IonImg } from '@ionic/react';
 import { IonGrid, IonCol, IonRow } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
 
