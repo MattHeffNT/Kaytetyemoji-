@@ -19,6 +19,12 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     var [name, setName]: any = useState(emoji.name_arrernte);
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const audio = new Audio(emoji.audio);
+    audio.preload = 'metadata';
+    audio.controls = true;
+
+    let lastCalled = 0;
+
     // Set the default title to arrernte when modal opened
     useEffect(() => {
         setName(emoji.name_arrernte);
@@ -43,10 +49,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
             ArrernteChip.current.style = 'background:#646466';
         }
     };
-
-    const audio = new Audio(emoji.audio);
-    audio.preload = 'metadata';
-    audio.controls = true;
 
     //play audio and function so that the colour of the play button stays yellow until end of audio
     const playAudio = () => {
@@ -88,7 +90,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         onClose();
     };
 
-    let lastCalled = 0;
     const shareButton = async () => {
         // debounce function so that user can't spam share button
         const currentTime = Date.now();
