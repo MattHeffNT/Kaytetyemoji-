@@ -1,7 +1,8 @@
 {
-  "name": "IndigEmoji",
+  "name": "KatijEmoji",
   "integrations": {
     "capacitor": {}
   },
-  "type": "react"
+  "type": "react",
+  "mode": "md"
 }

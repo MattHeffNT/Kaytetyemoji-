@@ -1,0 +1,49 @@
+npm WARN ERESOLVE overriding peer dependency
+npm WARN While resolving: @apideck/better-ajv-errors@0.3.6
+npm WARN Found: ajv@6.12.6
+npm WARN node_modules/ajv
+npm WARN   ajv@"^6.12.6" from the root project
+npm WARN   6 more (@eslint/eslintrc, ajv-keywords, schema-utils, eslint, ...)
+npm WARN 
+npm WARN Could not resolve dependency:
+npm WARN peer ajv@">=8" from @apideck/better-ajv-errors@0.3.6
+npm WARN node_modules/@apideck/better-ajv-errors
+npm WARN   @apideck/better-ajv-errors@"^0.3.1" from workbox-build@6.5.4
+npm WARN   node_modules/workbox-build
+npm WARN 
+npm WARN Conflicting peer dependency: ajv@8.12.0
+npm WARN node_modules/ajv
+npm WARN   peer ajv@">=8" from @apideck/better-ajv-errors@0.3.6
+npm WARN   node_modules/@apideck/better-ajv-errors
+npm WARN     @apideck/better-ajv-errors@"^0.3.1" from workbox-build@6.5.4
+npm WARN     node_modules/workbox-build
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE could not resolve
+npm ERR! 
+npm ERR! While resolving: @awesome-cordova-plugins/splash-screen@6.3.0
+npm ERR! Found: @awesome-cordova-plugins/core@5.46.0
+npm ERR! node_modules/@awesome-cordova-plugins/core
+npm ERR!   @awesome-cordova-plugins/core@"^5.46.0" from the root project
+npm ERR!   peer @awesome-cordova-plugins/core@"^5.1.0" from @awesome-cordova-plugins/social-sharing@5.46.0
+npm ERR!   node_modules/@awesome-cordova-plugins/social-sharing
+npm ERR!     @awesome-cordova-plugins/social-sharing@"^5.46.0" from the root project
+npm ERR! 
+npm ERR! Could not resolve dependency:
+npm ERR! peer @awesome-cordova-plugins/core@"^6.0.1" from @awesome-cordova-plugins/splash-screen@6.3.0
+npm ERR! node_modules/@awesome-cordova-plugins/splash-screen
+npm ERR!   @awesome-cordova-plugins/splash-screen@"^6.3.0" from the root project
+npm ERR! 
+npm ERR! Conflicting peer dependency: @awesome-cordova-plugins/core@6.3.0
+npm ERR! node_modules/@awesome-cordova-plugins/core
+npm ERR!   peer @awesome-cordova-plugins/core@"^6.0.1" from @awesome-cordova-plugins/splash-screen@6.3.0
+npm ERR!   node_modules/@awesome-cordova-plugins/splash-screen
+npm ERR!     @awesome-cordova-plugins/splash-screen@"^6.3.0" from the root project
+npm ERR! 
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR! 
+npm ERR! See /Users/heffa/.npm/eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/heffa/.npm/_logs/2023-01-28T01_56_55_176Z-debug-0.log

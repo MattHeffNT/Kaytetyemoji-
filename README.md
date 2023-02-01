@@ -11,7 +11,8 @@ You will need Android Studio (including all the respective Java libraries, sdks 
 
 Ionic has its own <a href='https://ionicframework.com/docs/'>documentation </a> so Ionic install and usage instructions should be sourced there first. 
 
-To install and run this source code you will need to install the Ionic CLI  
+To install and run this source code you will need to install the Ionic CLI 
+
 ```
 npm install -g @ionic/cli
 ```
@@ -25,13 +26,13 @@ Features such as the social sharing will not work from just a web server so you 
 To build for Android you will need to use the Ionic/Capacitor CLI and do a few steps:
 
 ```
-ionic capacitor add android
+ionic capacitor add ios 
 ```
 
 (from the documentation: with each meaningful change, ionic apps must be built into web assets before change can appear on android simulators/devices)
 
 ```
-ionic capacitor copy android
+ionic capacitor copy ios 
 ```
 
 Then if you have added any new Android native plugins etc you will need to run:
@@ -40,10 +41,10 @@ Then if you have added any new Android native plugins etc you will need to run:
 npx cap sync
 ```
 
-To serve your app (Android) onto the simulator or device with live reload run:
+To serve your app (ios) onto the simulator or device with live reload run:
 
 ```
-ionic capacitor run android -l --external
+ionic capacitor run ios -l --external
 ```
 
 The steps are similar for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>

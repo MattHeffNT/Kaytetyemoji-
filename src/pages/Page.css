@@ -5,10 +5,7 @@ ion-header::after {
 
 /* this is the container where the logo in the toolbar sits */
 ion-item {
-    /* --background: var(--background); */
-    /* width: 50%; */
     text-align: center;
-    /* now need to reduce the width while keeping image width */
 }
 
 ion-title {
@@ -30,11 +27,3 @@ ion-title {
     height: 10em !important;
     text-align: center;
 }
-/* #root { */
-/*   background-image:url('../assets/images/background.png') !important; */
-/* } */
-
-/* change to the ochre yellow (can grab from the IndigEmoji) */
-/* .ion-page  { */
-/*     --ion-color-primary:red !important;  */
-/* } */

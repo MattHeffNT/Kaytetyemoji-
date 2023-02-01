@@ -1,7 +1,15 @@
 import './styles/MyModal.css';
 import { useEffect, useState, useRef } from 'react';
 // import Ion components (seperated into two lines for readability)
-import { IonContent, IonHeader, IonToolbar, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
+import {
+    IonContent,
+    IonHeader,
+    IonToolbar,
+    IonImg,
+    IonGrid,
+    IonRow,
+    IonCol,
+} from '@ionic/react';
 
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
@@ -111,7 +119,11 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         var prependData = 'data:image/png;base64,' + emoji.data;
 
         // params @message, @subject, @file, @url
-        SocialSharing.share(`${emoji.name_arrernte} | ${emoji.name}`, '', prependData);
+        SocialSharing.share(
+            `${emoji.name_arrernte} | ${emoji.name}`,
+            '',
+            prependData
+        );
     };
 
     // enable the hardware back button to close the modal
@@ -125,7 +137,10 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
             };
             document.addEventListener('ionBackButton', backButtonHandler);
             return () => {
-                document.removeEventListener('ionBackButton', backButtonHandler);
+                document.removeEventListener(
+                    'ionBackButton',
+                    backButtonHandler
+                );
                 onClose();
             };
         }
@@ -174,19 +189,24 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                             <IonRow ref={audioRow} onClick={playAudio}>
                                 {/* onClick (it's more a toggle than a click event) play audio, change inner color to active yellow*/}
                                 {isPlaying ? (
-                                    <IonIcon
-                                        name="play-circle"
-                                        className="modal-icon"
-                                        size="large"
-                                    />
+                                    <>
+                                        <IonIcon
+                                            name="pause-circle-outline"
+                                            className="modal-icon"
+                                            size="large"
+                                        />
+                                        <h4>stop</h4>
+                                    </>
                                 ) : (
-                                    <IonIcon
-                                        name="play-circle-outline"
-                                        className="modal-icon"
-                                        size="large"
-                                    />
+                                    <>
+                                        <IonIcon
+                                            name="play-circle-outline"
+                                            className="modal-icon"
+                                            size="large"
+                                        />
+                                        <h4>play</h4>
+                                    </>
                                 )}
-                                <h4> play </h4>
                             </IonRow>
                         </IonCol>
                     </IonGrid>
