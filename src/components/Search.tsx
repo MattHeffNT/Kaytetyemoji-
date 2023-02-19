@@ -9,10 +9,12 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ setSearchText, emojiArray }) => {
     const searchBar: any = useRef();
     useEffect(() => {
+        // null check
         if (searchBar.current) {
             // listen for search bar input then call function
             searchBar.current.addEventListener('ionInput', handleInput);
         }
+        // when user starts typing into the searchbar handle the change event
         function handleInput(event: React.MouseEvent<HTMLInputElement, ChangeEvent>) {
             const query = (event.target as HTMLInputElement).value.toLowerCase();
             const rows = Array.from(emojiArray.current.children);
@@ -42,7 +44,6 @@ const Search: React.FC<SearchProps> = ({ setSearchText, emojiArray }) => {
             ref={searchBar}
             onIonChange={(e) => setSearchText(e.detail.value!)}
             placeholder="Search"
-            debounce={1000}
         />
     );
 };
