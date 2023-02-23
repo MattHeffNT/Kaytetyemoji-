@@ -3,6 +3,8 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
+    --ion-font-family: 'ArialRoundedBold';
+
     /** primary **/
     --ion-color-primary: #3880ff;
     --ion-color-primary-rgb: 56, 128, 255;
@@ -255,6 +257,11 @@ ion-searchbar {
     text-align: center;
     --box-shadow: none !important;
     height: 3rem;
+}
+@font-face {
+    font-family: 'ArialRoundedBold';
+    src: url('../assets/fonts/ArialRoundedBold.TTF');
+    font-weight: normal;
 }
 
 /* custom edits to place splash image to cover body */
