@@ -1,5 +1,6 @@
-import openpyxl
 import os
+
+import openpyxl
 
 # open the source workbook
 source_wb = openpyxl.load_workbook("./_Kaytetyemoji.xlsx", data_only=True)
@@ -25,9 +26,9 @@ k = 0
 # emojis
 for i, j in enumerate(sorted(emoji_list), start=1):
 
-    if i == 49:
-        new_sheet.cell(row=i + 1, column=1).value = "empty"
-        k = 1
+    # if i == 49:
+    #     new_sheet.cell(row=i + 1, column=1).value = "empty"
+    #     k = 1
 
     new_sheet.cell(row=i + 1 + k, column=1).value = j
 
@@ -39,15 +40,15 @@ for i, j in enumerate(sorted(audio_list), start=1):
         new_sheet.cell(row=i + 1, column=4).value = j
 
 # phrases
-# for i, j in enumerate(sorted(phrase_list), start=1):
+for i, j in enumerate(sorted(phrase_list), start=1):
 
-#     # if phrase isn't recorded yet, then skip row
-#     if source_sheet.cell(row=i + 1, column=8).value is None:
-#         new_sheet.cell(row=i + 1, column=5).value = ""
+    # if phrase isn't recorded yet, then skip row
+    if source_sheet.cell(row=i + 1, column=8).value is None:
+        new_sheet.cell(row=i + 1, column=5).value = ""
 
-#         continue
+        continue
 
-#     new_sheet.cell(row=i + 1, column=5).value = j
+    new_sheet.cell(row=i + 1, column=5).value = j
 
 
 # iterate through the rows and copy the values
