@@ -1,80 +1,109 @@
-import './styles/MyModal.css';
 import { useEffect, useState, useRef } from 'react';
-// import Ion components (seperated into two lines for readability)
 import { IonContent, IonHeader, IonToolbar, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
-
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
 
 // social sharing library
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing';
+import './styles/MyModal.css';
 
 const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
-    const ArrernteChip = useRef<any>();
+    const KaytetyeChip = useRef<any>();
     const EnglishChip = useRef<any>();
     const Share = useRef<any>();
     const audioRow = useRef<any>();
+    const phraseRow = useRef<any>();
     const playEvent = useRef<any>();
+    const playPhraseEvent = useRef<any>();
     const emoji = initialData;
-    var [name, setName]: any = useState(emoji.name_arrernte);
+    var [name, setName]: any = useState(emoji.name_kaytetye);
+    var [phrase, setPhrase]: any = useState(emoji.phrases_kaytetye);
     const [isPlaying, setIsPlaying] = useState(false);
-
+    const [phrasePlaying, setPhrasePlaying] = useState(false);
     const audio = new Audio(emoji.audio);
     audio.preload = 'metadata';
     audio.controls = true;
-
     let lastCalled = 0;
 
-    // Set the default title to arrernte when modal opened
+    // Set the default title to Kaytetye when modal opened
     useEffect(() => {
-        setName(emoji.name_arrernte);
-    }, [emoji.name_arrernte]);
+        setName(emoji.name_kaytetye);
+        setPhrase(emoji.phrases_kaytetye);
+    }, [emoji.name_kaytetye, emoji.phrases_kaytetye]);
 
-    // change active chip color and setName when Arrernte or English is selected in the modal
+    // change active chip color and setName when Kaytetye or English is selected in the modal
     const modalName = (e: any) => {
         const languageChoice = e.nativeEvent.srcElement.innerText;
 
         // will need to change these names when populating with Katyetye
-        if (languageChoice === 'Arrernte') {
-            setName(emoji.name_arrernte);
-            // if arrernte chosen, change to ochre yellow
-            ArrernteChip.current.style = 'background:#f4bd29;';
+        if (languageChoice === 'Kaytetye') {
+            setName(emoji.name_kaytetye);
+            setPhrase(emoji.phrases_kaytetye);
+
+            // if Katyetye chosen, change to ochre yellow
+            KaytetyeChip.current.style = 'background:#d47732;';
             // grab the inactive chip and change its colour to default
             EnglishChip.current.style = 'background:#646466';
         } else if (languageChoice === 'English') {
             setName(emoji.name);
+            setPhrase(emoji.phrases_english);
             //if english chosen, change english to ochre yellow
-            EnglishChip.current.style = 'background:#f4bd29;';
+            EnglishChip.current.style = 'background:#d47732;';
             // grab the inactive chip and change its colour to default
-            ArrernteChip.current.style = 'background:#646466';
+            KaytetyeChip.current.style = 'background:#646466';
         }
     };
 
     //play audio and function so that the colour of the play button stays yellow until end of audio
-    const playAudio = () => {
-        setIsPlaying(true);
+    const playAudio = (e: any) => {
+        // depending on whether play/phrase was pressed set the States for the respective element
+        const audioPhrase = e.currentTarget.id;
+        let prevValue: any;
 
         // toggle play/ pause
-        // grab previous value (because setting state updates the state)
-        const prevValue = isPlaying;
-        setIsPlaying(!prevValue);
+        // grab previous value when state updated, which we can use to keep track
+        if (audioPhrase === 'audio') {
+            prevValue = isPlaying;
+            setIsPlaying(true);
+            setIsPlaying(!prevValue);
+        } else if (audioPhrase === 'phrase') {
+            prevValue = phrasePlaying;
+            setPhrasePlaying(true);
+            setPhrasePlaying(!prevValue);
+        }
 
         // check if not the previous value then play and on toggle, pause and reset audio
         // then remove css class from icon
         if (!prevValue) {
-            // play the Emoji audio
-            playEvent.current.play();
-            // change color of play icon to ochre yellow
-            audioRow.current.classList.add('audio-active');
+            if (audioPhrase === 'audio') {
+                // play the Emoji audio
+                playEvent.current.play();
+                // change color of play icon to ochre yellow
+                audioRow.current.classList.add('audio-active');
+            } else if (audioPhrase === 'phrase') {
+                playPhraseEvent.current.play();
+                phraseRow.current.classList.add('audio-active');
+            }
         } else {
-            playEvent.current.pause();
-            playEvent.current.currentTime = 0;
-            audioRow.current.classList.remove('audio-active');
+            if (audioPhrase === 'audio') {
+                playEvent.current.pause();
+                playEvent.current.currentTime = 0;
+                audioRow.current.classList.remove('audio-active');
+            } else {
+                playPhraseEvent.current.pause();
+                playPhraseEvent.current.currentTime = 0;
+                phraseRow.current.classList.remove('audio-active');
+            }
         }
         // once audio has finished, set playing back to false and reset play icon style to default state
         playEvent.current.onended = () => {
             audioRow.current.classList.remove('audio-active');
             setIsPlaying(false);
+        };
+        // once audio has finished, set playing back to false and reset play icon style to default state
+        playPhraseEvent.current.onended = () => {
+            phraseRow.current.classList.remove('audio-active');
+            setPhrasePlaying(false);
         };
     };
 
@@ -84,7 +113,8 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         setIsPlaying(false);
         // set timer on modal so that you don't see the name of the emoji change straight away when you close it
         setTimeout(() => {
-            setName(emoji.name_arrernte);
+            setName(emoji.name_kaytetye);
+            setPhrase(emoji.phrases_kaytetye);
         }, 200);
         // close the modal
         onClose();
@@ -110,7 +140,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         var prependData = 'data:image/png;base64,' + emoji.data;
 
         // params @message, @subject, @file, @url
-        SocialSharing.share(`${emoji.name_arrernte} | ${emoji.name}`, '', prependData);
+        SocialSharing.share(`${emoji.name_kaytetye} | ${emoji.name}`, '', prependData);
     };
 
     // enable the hardware back button to close the modal
@@ -146,8 +176,8 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
                     <h1> {name}</h1>
 
-                    <IonChip ref={ArrernteChip} id="aChip" onClick={modalName}>
-                        Arrernte
+                    <IonChip ref={KaytetyeChip} id="aChip" onClick={modalName}>
+                        Kaytetye
                     </IonChip>
                     <IonChip ref={EnglishChip} onClick={modalName}>
                         English
@@ -159,7 +189,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
                     <IonGrid>
                         <IonCol>
-                            <IonRow ref={Share} onClick={shareButton}>
+                            <IonRow ref={Share} onClick={shareButton} className="iconRow">
                                 {/* social share  */}
                                 <IonIcon
                                     name="share-social-outline"
@@ -170,11 +200,16 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                             </IonRow>
 
                             <audio src={emoji.audio} ref={playEvent}></audio>
-                            <IonRow ref={audioRow} onClick={playAudio}>
+                            <IonRow
+                                ref={audioRow}
+                                onClick={playAudio}
+                                className="iconRow"
+                                id="audio"
+                            >
                                 {/* onClick (it's more a toggle than a click event) play audio, change inner color to active yellow*/}
                                 {isPlaying ? (
                                     <IonIcon
-                                        name="play-circle"
+                                        name="stop-circle"
                                         className="modal-icon"
                                         size="large"
                                     />
@@ -187,7 +222,39 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                                 )}
                                 <h4> play </h4>
                             </IonRow>
+
+                            <audio src={emoji.phrases} ref={playPhraseEvent}></audio>
+                            {/* if phrase in the object then render it in the modal otherwise don't show anything */}
+                            {phrase ? (
+                                <IonRow
+                                    ref={phraseRow}
+                                    onClick={playAudio}
+                                    className="iconRow"
+                                    id="phrase"
+                                >
+                                    {/* change icon depending on whether the button is playing or not */}
+                                    {phrasePlaying ? (
+                                        <IonIcon
+                                            name="stop-circle"
+                                            className="modal-icon"
+                                            size="large"
+                                        />
+                                    ) : (
+                                        <IonIcon
+                                            name="play-circle-outline"
+                                            className="modal-icon"
+                                            size="large"
+                                        />
+                                    )}
+                                    <h4> phrase </h4>
+                                    <br />
+                                </IonRow>
+                            ) : (
+                                <></>
+                            )}
                         </IonCol>
+                        {/* on english/kaytetye click change phrase language */}
+                        <p className="phraseText"> {phrase}</p>
                     </IonGrid>
                 </div>
             </IonContent>
