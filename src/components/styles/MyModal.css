@@ -12,13 +12,15 @@
     border-radius: 2em;
     padding-top: 1em;
     transform: translateY(5%);
+    margin-top: -1.5rem;
 }
 
+/* arrernte/english */
 ion-chip {
+    font-family: open sans;
     border-radius: 0;
     background: #646464;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 25px;
     height: 50%;
     margin: 0 auto;
     justify-content: center;
@@ -29,37 +31,53 @@ ion-chip {
     width: 35%;
 }
 
+/* // kati chip */
 #aChip {
-    background: #f2bd29;
+    background: #d47732;
 }
 
 .modal-icon {
-    font-size: -1.5rem;
+    font-size: 1rem;
     padding: 10px;
 }
 
-.modal-icon + h2 {
-    margin-top: 16%;
+/* the english and katij emoji name */
+.modal-container > h1 {
+    font-size: 35px;
+}
+.phraseText {
+    font-family: open sans;
+    font-weight: normal;
+    text-align: center;
+    margin-left: 5em;
+    margin-right: 5em;
+    font-size: 15px;
+    font-size: 13px;
 }
 
-#playIcon {
-    width: 28%;
+.modal-icon + h4 {
+    margin-top: 10%;
+    padding-left: 1rem;
+}
+
+#phraseRow {
+    margin-top: 5px;
 }
 
 .modal-container > ion-grid > ion-col {
     display: grid;
     justify-content: center;
-    padding: -1em;
-    vertical-align: middle;
+    font-family: open sans;
+    width: 100%;
 }
 
 /* changes color of play icon when pressed */
 .audio-active {
-    color: #f2bd29;
+    color: #d47732;
     transition: -1s;
 }
 
 .modal-icon-pressed {
-    color: #f2bd29;
+    color: #d47732;
     transition: 0.25s;
 }
