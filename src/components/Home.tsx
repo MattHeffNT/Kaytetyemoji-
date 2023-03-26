@@ -1,6 +1,6 @@
 import './styles/ExploreContainer.css';
 import emojis from '../assets/emojis.json';
-import { useState, useEffect, useRef, useMemo, ChangeEvent } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { useIonViewWillEnter, IonContent, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
 import MyModal from './MyModal';
 import Slides from './Slides';
