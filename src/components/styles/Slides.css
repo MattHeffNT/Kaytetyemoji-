@@ -1,3 +1,7 @@
+#slide-content {
+    --background: url('/src/assets/splash.png') center/97% !important;
+}
+
 .slide-container {
     display: flex-grid;
     text-align: left;
@@ -5,6 +9,9 @@
     padding-left: 10%;
     padding-right: 10%;
     padding-bottom: 15%;
+}
+.slide-container > p {
+    font-family: open sans;
 }
 
 #welcomeIcon {

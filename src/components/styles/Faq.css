@@ -8,7 +8,8 @@
     padding: 2.5em;
 }
 
-.container strong {
+.faq-container > p > strong {
+    font-family: open sans;
     font-size: 20px;
     line-height: 26px;
 }
@@ -16,13 +17,16 @@
     text-align: left;
 }
 
-.container > p {
+.faq-container > p {
+    font-family: open sans;
+    font-weight: 300;
     font-size: 16px;
     line-height: 22px;
     margin: 0;
     padding-top: 5%;
 }
 
-.container a {
+.faq-container > a {
     text-decoration-line: underline;
+    text-decoration-color: none;
 }
