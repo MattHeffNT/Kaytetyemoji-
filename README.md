@@ -53,7 +53,7 @@ The steps are similar for IOS <a href = "https://ionicframework.com/docs/develop
 
 ## Python files
 
-- The python files in the repository are quality of life scripts. The <strong>ConvertXL</strong> script generates the table and reformats some of the cells to get them ready to be exported as a CSV file.We have this running in a virtual environment (hence requirements.txt) So make sure you run:
+The python files in the repository are quality of life scripts. The <strong>ConvertXL</strong> script generates the table and reformats some of the cells to get them ready to be exported as a CSV file.We have this running in a virtual environment (hence requirements.txt) So make sure you run:
 
 ```
 pip install -r requirements.txt
