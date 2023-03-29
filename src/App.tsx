@@ -32,7 +32,7 @@ const App: React.FC = () => {
 
     // Show the splash for three and a half seconds and then automatically hide it:
     SplashScreen.show({
-        showDuration: 3500,
+        showDuration: 4000,
         autoHide: true,
     });
 
