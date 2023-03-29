@@ -1,14 +1,12 @@
 #slide-content {
-    --background: url('/src/assets/splash.png') center/97% !important;
+    --background: url('/src/assets/splash.png') center/100% !important;
 }
 
 .slide-container {
     display: flex-grid;
     text-align: left;
     justify-items: center;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 15%;
+    padding: 0 10% 15%;
 }
 .slide-container > p {
     font-family: open sans;
@@ -23,7 +21,7 @@
 }
 
 .swiper-pagination.swiper-pagination-bullets {
-    background: var(--background);
+    background: #d47732;
     padding-bottom: 2em;
     position: fixed;
     bottom: 0px;
