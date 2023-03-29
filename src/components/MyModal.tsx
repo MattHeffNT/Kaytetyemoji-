@@ -39,7 +39,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         if (languageChoice === 'Kaytetye') {
             setName(emoji.name_kaytetye);
             setPhrase(emoji.phrases_kaytetye);
-
             // if Katyetye chosen, change to ochre yellow
             KaytetyeChip.current.style = 'background:#d47732;';
             // grab the inactive chip and change its colour to default
@@ -95,6 +94,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                 phraseRow.current.classList.remove('audio-active');
             }
         }
+
         // once audio has finished, set playing back to false and reset play icon style to default state
         playEvent.current.onended = () => {
             audioRow.current.classList.remove('audio-active');
@@ -111,10 +111,22 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     const Close = () => {
         // stop the audio
         setIsPlaying(false);
+
+        // we need to check if phrase is loaded on the emoji otherwise the close button won't work
+        // because below statement depends on it
+        if (phrase) {
+            setPhrasePlaying(false);
+            phraseRow.current.classList.remove('audio-active');
+        }
+
+        // remove ochre styling from audio/phrase rows
+        audioRow.current.classList.remove('audio-active');
         // set timer on modal so that you don't see the name of the emoji change straight away when you close it
         setTimeout(() => {
             setName(emoji.name_kaytetye);
-            setPhrase(emoji.phrases_kaytetye);
+            if (phrase) {
+                setPhrase(emoji.phrases_kaytetye);
+            }
         }, 200);
         // close the modal
         onClose();
@@ -145,28 +157,30 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
     // enable the hardware back button to close the modal
     useEffect(() => {
+        const backButtonHandler = () => {
+            Close();
+        };
+
         if (isOpen) {
-            const backButtonHandler = (e: any) => {
-                e.detail.register(100, () => {
-                    console.log('event listener added');
-                    Close();
-                });
-            };
             document.addEventListener('ionBackButton', backButtonHandler);
-            return () => {
-                document.removeEventListener('ionBackButton', backButtonHandler);
-                onClose();
-            };
+        } else {
+            document.removeEventListener('ionBackButton', backButtonHandler);
         }
-    }, [onClose]);
+
+        return () => {
+            document.removeEventListener('ionBackButton', backButtonHandler);
+        };
+    }, [isOpen, Close]);
 
     return (
         <IonModal isOpen={isOpen}>
             <IonHeader>
                 <IonToolbar color="none">
                     <IonButtons slot="start">
-                        {/* I think a "close" works better here than the back icon */}
-                        <IonButton onClick={Close}>Close</IonButton>
+                        {/* close button */}
+                        <IonButton onClick={Close} style={{ color: 'black' }}>
+                            Kele | Close
+                        </IonButton>
                     </IonButtons>
                 </IonToolbar>
             </IonHeader>
@@ -220,7 +234,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                                         size="large"
                                     />
                                 )}
-                                <h4> play </h4>
+                                <h4> word </h4>
                             </IonRow>
 
                             <audio src={emoji.phrases} ref={playPhraseEvent}></audio>
