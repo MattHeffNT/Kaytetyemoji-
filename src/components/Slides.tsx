@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonModal, IonToolbar, IonButtons, IonContent, IonButton, IonImg } from '@ionic/react';
 import { IonGrid, IonCol, IonRow } from '@ionic/react';
@@ -19,23 +19,28 @@ import '../theme/variables.css';
 // Optional parameters to pass to the swiper instance.
 // See https://swiperjs.com/swiper-api for valid options.
 
-const Slides: React.FC<any> = ({ isOpen, onClose }) => {
+interface SlidesProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
     const slidesRef = useRef<any>();
     const contentRef = useRef<HTMLIonContentElement>(null);
     const history = useHistory();
 
     // this function controlls the scroll on some slides, the transition effects,
     // as well as making sure between each slide the scroll position is reset
-    const resetSlideScroll = async () => {
+    const resetSlideScroll = useCallback(async () => {
         // on smaller content pages disable scroll
         if (contentRef.current) {
             contentRef.current.scrollY = true;
             contentRef.current.scrollToTop();
         }
-    };
+    }, []);
 
     // on about link click come back to about page
-    const handleLink = () => {
+    const handleLink = useCallback(() => {
         const content = document.querySelector('.info-container');
 
         history.push('/page/Information');
@@ -45,7 +50,7 @@ const Slides: React.FC<any> = ({ isOpen, onClose }) => {
         if (content) {
             content.scrollIntoView();
         }
-    };
+    }, [history, onClose]);
 
     // enable the hardware back button to close the modal
     useEffect(() => {
@@ -252,5 +257,5 @@ const Slides: React.FC<any> = ({ isOpen, onClose }) => {
             </IonContent>
         </IonModal>
     );
-};
+});
 export default Slides;
