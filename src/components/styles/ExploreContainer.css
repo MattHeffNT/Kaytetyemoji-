@@ -25,3 +25,8 @@
 .resetEmojis {
     display: inherit;
 }
+
+/* put border around the searchbar */
+.searchbar-input.sc-ion-searchbar-md {
+    background: none;
+}
