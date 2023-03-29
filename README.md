@@ -61,13 +61,9 @@ pip install -r requirements.txt
 
 - Once converted to CSV then we can run Sam's script <strong>check_images.py</strong> to convert to JSON which we then use to dynamically load in the audio etc.
 
-## notes for audio (from IndigEmoji src)
 
-Files kept here to be imported into all platforms. These files are not referenced in the codebase.
-All sound filenames must be in lowercase with no spaces.
+<!-- ## create your own emoji App -->
 
-Sound files must be in the following places:
-Android: Save your sound clip files under the directory android/app/src/main/res/raw. Note that files in this directory must be lowercase and underscored (e.g. my_file_name.mp3) and that subdirectories are not supported by Android.
-iOS: Open Xcode and add your sound files to the project (Right-click the project and select Add Files to [PROJECTNAME])
+<!-- The app has been created in such a way that you can easily create your own version by creating whichever emoji or branding assets you want, then populating the csv with the language words and links to the paths of your assets. The aforementioned Python files can automate these processes if you  -->
 
-We may want to make an automation tool for doing both of the above at some point.
+
