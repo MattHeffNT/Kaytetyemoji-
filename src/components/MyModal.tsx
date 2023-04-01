@@ -79,8 +79,12 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                 playEvent.current.play();
                 // change color of play icon to ochre yellow
                 audioRow.current.classList.add('audio-active');
+                // grey out the non-playing row
+                phraseRow.current.classList.add('ghost');
             } else if (audioPhrase === 'phrase') {
                 playPhraseEvent.current.play();
+                // grey out the non-playing row
+                audioRow.current.classList.add('ghost');
                 phraseRow.current.classList.add('audio-active');
             }
         } else {
@@ -88,22 +92,27 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
                 playEvent.current.pause();
                 playEvent.current.currentTime = 0;
                 audioRow.current.classList.remove('audio-active');
+                phraseRow.current.classList.remove('ghost');
             } else {
                 playPhraseEvent.current.pause();
                 playPhraseEvent.current.currentTime = 0;
                 phraseRow.current.classList.remove('audio-active');
+                audioRow.current.classList.remove('ghost');
             }
         }
 
         // once audio has finished, set playing back to false and reset play icon style to default state
+        // ghostout the other play button until respective audio finished playing
         playEvent.current.onended = () => {
             audioRow.current.classList.remove('audio-active');
             setIsPlaying(false);
+            phraseRow.current.classList.remove('ghost');
         };
         // once audio has finished, set playing back to false and reset play icon style to default state
         playPhraseEvent.current.onended = () => {
             phraseRow.current.classList.remove('audio-active');
             setPhrasePlaying(false);
+            audioRow.current.classList.remove('ghost');
         };
     };
 
@@ -117,6 +126,8 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         if (phrase) {
             setPhrasePlaying(false);
             phraseRow.current.classList.remove('audio-active');
+            audioRow.current.classList.remove('ghost');
+            phraseRow.current.classList.remove('ghost');
         }
 
         // remove ochre styling from audio/phrase rows
