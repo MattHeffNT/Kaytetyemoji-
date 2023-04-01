@@ -199,7 +199,10 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
                         {/* "slide 4" */}
                         <IonRow>
                             <IonCol>
-                                <IonImg src="" id="drawing" />
+                                <IonImg
+                                    src="../assets/welcome/welcome4_screenshot.png"
+                                    id="drawing"
+                                />
                             </IonCol>
                             <IonCol>
                                 <div className="slide-container">
@@ -241,11 +244,11 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
                                         </p>
                                     </strong>
                                     <p style={{ color: 'white' }}>
-                                        Press play to listen to the Kaytetye word that reflects the
+                                        Press word to listen to the Kaytetye word that reflects the
                                         emoji. Then try saying the word!
                                     </p>
                                     <p style={{ color: 'white' }}>
-                                        Press play to listen to a Kaytetye sentence with that word
+                                        Press phrase to listen to a Kaytetye sentence with that word
                                         told by Kaytetye elder Tommy Jangala. You can read the
                                         English translation too.
                                     </p>
