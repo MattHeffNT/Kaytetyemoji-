@@ -85,3 +85,8 @@ ion-chip {
     font-size: 15px;
     font-size: 13px;
 }
+
+.ghost {
+    color: lightgrey !important;
+    pointer-events: none;
+}
