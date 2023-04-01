@@ -43,10 +43,10 @@ const Info: React.FC<any> = () => {
                     }}
                     id="slide-link"
                 >
-                    View the welcome screens.
+                    View the welcome screens
                 </p>
                 <p> Read more about the emojis on the </p>
-                <a href="https://www.indigemoji.com.au/">Artnke website</a>.
+                <a href="https://www.indigemoji.com.au/">Artnke website</a>
                 <br />
                 <p>
                     <a href="https://www.indigemoji.com.au/terms-conditions">
