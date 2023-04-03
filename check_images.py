@@ -1,5 +1,5 @@
 """
-Script by Sam Lavigne aka Antiboredom https://github.com/antiboredom
+Original script from Sam Lavigne aka Antiboredom https://github.com/antiboredom
 that uses the csv file to generate the paths to the emojis and audio
 in a json file. As well as converts the image to a base64 uri.
 
@@ -33,27 +33,47 @@ with open("./emojis.csv", "r") as infile:
         #     continue
         # if not row['phrases_english']:
         #     continue
-        with open("./src/assets/emojis/" + row["file"], "rb") as imagefile:
+
+        """generates the uri"""
+        with open("./public/assets/emojis/" + row["file"], "rb") as imagefile:
             imgdata = base64.b64encode(imagefile.read()).decode("utf8")
 
-        # NEED TO ADD PHRASE ROW
-        item = {
-            "name": row["name"],
-            "name_kaytetye": row["name_kaytetye"],
-            "file": "../assets/emojis/" + row["file"],
-            "data": imgdata,
-            "audio": "../assets/audio/" + row["audio"],
-            "phrases": "../assets/phrases/" + row["phrases"],
-            "phrases_kaytetye": row["phrases_kaytetye"],
-            "phrases_english": row["phrases_english"]
-        }
-        if row["audio"] != "" and not os.path.exists(
-            "../assets/audio/%s" % row["audio"]
-        ):
-            print("missing %s" % row["audio"])
+        if row['phrases'] == "":
+            item = {
+                "name": row["name"],
+                "name_kaytetye": row["name_kaytetye"],
+                "file": "../assets/emojis/" + row["file"],
+                "data": imgdata,
+                "audio": "../assets/audio/" + row["audio"],
+                "phrases": "",
+                "phrases_kaytetye": row["phrases_kaytetye"],
+                "phrases_english": row["phrases_english"]
+            }
+            if row["audio"] != "" and not os.path.exists(
+                "../assets/audio/%s" % row["audio"]
+            ):
+                print("missing %s" % row["audio"])
+            else:
+                item["audio"] = "./src/assets/audio/" + row["audio"]
+            out["emojis"].append(item)
         else:
-            item["audio"] = "./src/assets/audio/" + row["audio"]
-        out["emojis"].append(item)
+            item = {
+                "name": row["name"],
+                "name_kaytetye": row["name_kaytetye"],
+                "file": "../assets/emojis/" + row["file"],
+                "data": imgdata,
+                "audio": "../assets/audio/" + row["audio"],
+                "phrases": "../assets/phrases/" + row["phrases"],
+                "phrases_kaytetye": row["phrases_kaytetye"],
+                "phrases_english": row["phrases_english"]
+            }
+            if row["audio"] != "" and not os.path.exists(
+                "../assets/audio/%s" % row["audio"]
+            ):
+                print("missing %s" % row["audio"])
+            else:
+                item["audio"] = "./src/assets/audio/" + row["audio"]
+            out["emojis"].append(item)
 
 
 with open("./src/assets/emojis.json", "w") as outfile:
