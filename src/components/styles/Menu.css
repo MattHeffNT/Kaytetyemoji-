@@ -3,6 +3,12 @@ ion-menu ion-content {
     --width: 30%;
 }
 
+ion-menu-button {
+  font-size:2rem;
+  color: white !important;
+  filter:contrast(110%)
+}
+
 ion-menu.md ion-content {
     --padding-start: 8px;
     --padding-end: 8px;
