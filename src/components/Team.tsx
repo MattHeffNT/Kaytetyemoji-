@@ -116,8 +116,7 @@ const Team: React.FC<any> = () => {
                 <p>
                     Regional Arts Australia, Arts NT, The Northern Territory Government, The
                     University of Sydney, the Johnston Foundation, Rachel Perkins, Sam Lavigne, Tega
-                    Brain, Timothy Chatwin, Jennifer Pysden, Bao Stone catering, Australian National
-                    University, and Watch This Space.
+                    Brain, Timothy Chatwin, Jennifer Pysden, Bao Stone catering, Watch This Space, and Australian National University
                 </p>
                 <p>
                     <em>
