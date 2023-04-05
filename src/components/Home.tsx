@@ -38,6 +38,7 @@ const Home: React.FC = () => {
     App.exitApp();
   };
 
+  // double check that the modal isn't open before exiting app
   useEffect(() => {
     if (!isModalOpen) {
       document.addEventListener('ionBackButton', handleBackButton);
