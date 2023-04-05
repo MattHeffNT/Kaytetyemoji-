@@ -41,6 +41,7 @@ ion-chip {
     padding: 1rem;
     color: white;
     width: 35%;
+    filter: contrast(110%);
 }
 
 /* // katij chip */
