@@ -1,9 +1,8 @@
-import { IonApp, IonLoading, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -23,37 +22,34 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 import { SplashScreen } from '@capacitor/splash-screen';
-
 setupIonicReact();
 
 const App: React.FC = () => {
-    // Hide the splash (you should do this on app launch)
-    SplashScreen.hide();
+  // Hide the splash (you should do this on app launch)
+  SplashScreen.hide();
+  SplashScreen.show({
+    showDuration: 1900,
+    autoHide: true,
+  });
 
-    // Show the splash for three and a half seconds and then automatically hide it:
-    SplashScreen.show({
-        showDuration: 4000,
-        autoHide: true,
-    });
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonRouterOutlet id="main">
+            <Route path="/" exact={true}>
+              <Redirect to="/page/Home" />
+            </Route>
 
-    return (
-        <IonApp>
-            <IonReactRouter>
-                <IonSplitPane contentId="main">
-                    <Menu />
-                    <IonRouterOutlet id="main">
-                        <Route path="/" exact={true}>
-                            <Redirect to="/page/Home" />
-                        </Route>
-
-                        <Route path="/page/:name" exact={true}>
-                            <Page />
-                        </Route>
-                    </IonRouterOutlet>
-                </IonSplitPane>
-            </IonReactRouter>
-        </IonApp>
-    );
+            <Route path="/page/:name" exact={true}>
+              <Page />
+            </Route>
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
+  );
 };
 
 export default App;
