@@ -9,7 +9,10 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ setSearchText, emojiArray }) => {
     const searchBarRef = useRef<HTMLIonSearchbarElement>(null);
 
-    function handleInput(event: React.MouseEvent<HTMLInputElement, ChangeEvent>) {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    function handleInput(
+        event: React.MouseEvent<HTMLInputElement, ChangeEvent>
+    ) {
         const query = (event.target as HTMLInputElement).value.toLowerCase();
         const rows = Array.from(emojiArray.current.children);
         setSearchText(query);
