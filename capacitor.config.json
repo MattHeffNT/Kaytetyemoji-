@@ -1,16 +1,61 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "kaytetyemoji",
+  "appId": "io.kaytetyemoji.app",
+  "appName": "Kaytetyemoji",
   "webDir": "build",
   "bundledWebRuntime": false,
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 3500,
+      "launchShowDuration": 2500,
       "launchAutoHide": true
     }
   },
-  "appIcon": "public/assets/icon",
+  "ScreenOrientation": {
+    "ios": "portrait",
+    "android": "portrait"
+  },
+  "icons": {
+    "android": {
+      "backgroundColor": "#ffffff",
+      "path": "./assets/icons/",
+      "padding": 8,
+      "assets": [
+        {
+          "src": "icon-48.webp",
+          "sizes": "48x48",
+          "density": "mdpi"
+        },
+        {
+          "src": "icon-72.webp",
+          "sizes": "72x72",
+          "density": "hdpi"
+        },
+        {
+          "src": "icon-96.webp",
+          "sizes": "96x96",
+          "density": "xhdpi"
+        },
+        {
+          "src": "icon-144.webp",
+          "sizes": "144x144",
+          "density": "xxhdpi"
+        },
+        {
+          "src": "icon-192.webp",
+          "sizes": "192x192",
+          "density": "xxxhdpi"
+        },
+        {
+          "src": "icon-512.webp",
+          "sizes": "512x512",
+          "density": "nodpi"
+        }
+      ]
+    }
+  },
+  "copy": {
+    "./src/assets/emojis": "./build/assets/emojis"
+  },
   "splash": {
-    "image": "public/assets/splash"
+    "image": "./assets/splash/splash.png"
   }
 }
