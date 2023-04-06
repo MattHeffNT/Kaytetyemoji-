@@ -3,14 +3,12 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "@awesome-cordova-plugins/core": "^5.46.0",
-        "@awesome-cordova-plugins/social-sharing": "^5.46.0",
-        "@awesome-cordova-plugins/splash-screen": "^6.3.0",
+        "@awesome-cordova-plugins/core": "^6.3.0",
+        "@awesome-cordova-plugins/social-sharing": "^6.3.0",
         "@capacitor/android": "4.1.0",
         "@capacitor/app": "4.0.1",
         "@capacitor/core": "^4.1.0",
         "@capacitor/haptics": "4.0.1",
-        "@capacitor/ios": "^4.6.1",
         "@capacitor/keyboard": "4.0.1",
         "@capacitor/splash-screen": "^4.1.2",
         "@capacitor/status-bar": "4.0.1",
@@ -26,7 +24,6 @@
         "@types/react-dom": "^16.9.17",
         "@types/react-router": "^5.1.19",
         "@types/react-router-dom": "^5.1.7",
-        "ajv": "^6.12.6",
         "cordova-plugin-splashscreen": "^6.0.2",
         "cordova-plugin-x-socialsharing": "^6.0.4",
         "es6-promise-plugin": "^4.2.2",
@@ -83,6 +80,7 @@
     "devDependencies": {
         "@capacitor/assets": "^2.0.4",
         "@capacitor/cli": "4.1.0",
+        "@capacitor/ios": "^4.7.3",
         "eslint": "^8.36.0",
         "eslint-plugin-simple-import-sort": "^10.0.0"
     },
