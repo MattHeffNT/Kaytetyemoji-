@@ -17,8 +17,7 @@
 
 
 # ios
-
-/ios/DerivedData
+ios/DerivedData
 
 # misc
 .DS_Store
