@@ -1,5 +1,13 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { IonContent, IonHeader, IonToolbar, IonImg, IonGrid, IonRow, IonCol } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonToolbar,
+  IonImg,
+  IonGrid,
+  IonRow,
+  IonCol,
+} from '@ionic/react';
 import { IonModal, IonChip, IonButtons, IonButton } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
 
@@ -167,10 +175,13 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
     // our json doesn't have this line in front of the base64 so just prepending to be
     // able to use this social share plugin. We will also style the button when it's pressed
     const prependData = 'data:image/png;base64,' + emoji.data;
-    console.log(prependData);
 
     // params @message, @subject, @file, @url
-    SocialSharing.share(`${emoji.name_kaytetye} | ${emoji.name}`, '', prependData);
+    SocialSharing.share(
+      `${emoji.name_kaytetye} | ${emoji.name}`,
+      '',
+      prependData
+    );
   };
 
   // enable the hardware back button to close the modal
@@ -182,6 +193,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         // delay of 1000 ms
         return;
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       lastCalled = currentTime;
 
       Close();
@@ -200,8 +212,8 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
   return (
     <IonModal isOpen={isOpen}>
       <IonHeader>
-        <IonToolbar color="none">
-          <IonButtons slot="start">
+        <IonToolbar color='none'>
+          <IonButtons slot='start'>
             {/* close button */}
             <IonButton onClick={Close} style={{ color: 'black' }}>
               Close
@@ -210,12 +222,12 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div className="modal-container">
-          <IonImg src={emoji.file} alt={emoji.name} id="modalImg" />
+        <div className='modal-container'>
+          <IonImg src={emoji.file} alt={emoji.name} id='modalImg' />
 
           <h1> {name}</h1>
 
-          <IonChip ref={KaytetyeChip} id="aChip" onClick={modalName}>
+          <IonChip ref={KaytetyeChip} id='aChip' onClick={modalName}>
             Kaytetye
           </IonChip>
           <IonChip ref={EnglishChip} onClick={modalName}>
@@ -228,19 +240,35 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
 
           <IonGrid>
             <IonCol>
-              <IonRow ref={Share} onClick={shareButton} className="iconRow">
+              <IonRow ref={Share} onClick={shareButton} className='iconRow'>
                 {/* social share  */}
-                <IonIcon name="share-social-outline" className="modal-icon" size="large" />
+                <IonIcon
+                  name='share-social-outline'
+                  className='modal-icon'
+                  size='large'
+                />
                 <h4> share </h4>
               </IonRow>
 
               <audio src={emoji.audio} ref={playEvent}></audio>
-              <IonRow ref={audioRow} onClick={playAudio} className="iconRow" id="audio">
+              <IonRow
+                ref={audioRow}
+                onClick={playAudio}
+                className='iconRow'
+                id='audio'>
                 {/* onClick (it's more a toggle than a click event) play audio, change inner color to active yellow*/}
                 {isPlaying ? (
-                  <IonIcon name="stop-circle" className="modal-icon" size="large" />
+                  <IonIcon
+                    name='stop-circle'
+                    className='modal-icon'
+                    size='large'
+                  />
                 ) : (
-                  <IonIcon name="play-circle-outline" className="modal-icon" size="large" />
+                  <IonIcon
+                    name='play-circle-outline'
+                    className='modal-icon'
+                    size='large'
+                  />
                 )}
                 <h4> word </h4>
               </IonRow>
@@ -248,12 +276,24 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
               <audio src={emoji.phrases} ref={playPhraseEvent}></audio>
               {/* if phrase in the object then render it in the modal otherwise don't show anything */}
               {phrase ? (
-                <IonRow ref={phraseRow} onClick={playAudio} className="iconRow" id="phrase">
+                <IonRow
+                  ref={phraseRow}
+                  onClick={playAudio}
+                  className='iconRow'
+                  id='phrase'>
                   {/* change icon depending on whether the button is playing or not */}
                   {phrasePlaying ? (
-                    <IonIcon name="stop-circle" className="modal-icon" size="large" />
+                    <IonIcon
+                      name='stop-circle'
+                      className='modal-icon'
+                      size='large'
+                    />
                   ) : (
-                    <IonIcon name="play-circle-outline" className="modal-icon" size="large" />
+                    <IonIcon
+                      name='play-circle-outline'
+                      className='modal-icon'
+                      size='large'
+                    />
                   )}
                   <h4> phrase </h4>
                   <br />
@@ -263,7 +303,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData }) => {
               )}
             </IonCol>
             {/* on english/kaytetye click change phrase language */}
-            <p className="phraseText"> {phrase}</p>
+            <p className='phraseText'> {phrase}</p>
           </IonGrid>
         </div>
       </IonContent>

@@ -1,6 +1,12 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import {
+  IonApp,
+  IonRouterOutlet,
+  IonSplitPane,
+  setupIonicReact,
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Menu from './components/Menu';
 import Page from './pages/Page';
 /* Core CSS required for Ionic components to work properly */
@@ -26,23 +32,27 @@ setupIonicReact();
 
 const App: React.FC = () => {
   // Hide the splash (you should do this on app launch)
-  SplashScreen.hide();
-  SplashScreen.show({
-    showDuration: 1900,
-    autoHide: true,
-  });
+  useEffect(() => {
+    SplashScreen.show({
+      showDuration: 2500,
+      autoHide: true,
+    });
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 2500);
+  }, []);
 
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
+        <IonSplitPane contentId='main'>
           <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Home" />
+          <IonRouterOutlet id='main'>
+            <Route path='/' exact={true}>
+              <Redirect to='/page/Home' />
             </Route>
 
-            <Route path="/page/:name" exact={true}>
+            <Route path='/page/:name' exact={true}>
               <Page />
             </Route>
           </IonRouterOutlet>
