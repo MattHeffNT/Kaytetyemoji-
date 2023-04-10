@@ -1,42 +1,30 @@
 /* get rid of material design shadow on header */
 ion-header::after {
-    background: none !important;
+  background: none !important;
 }
 
 /* this is the container where the logo in the toolbar sits */
 ion-item {
-    /* --background: var(--background); */
-    /* width: 50%; */
-    text-align: center;
-    /* now need to reduce the width while keeping image width */
+  text-align: center;
 }
 
 ion-title {
-    text-align: center;
+  text-align: center;
 }
 
 #home-icon-button {
-    height: 6em;
-    width: 8rem;
-    text-align: center;
-    margin-left: -2em;
-    --ripple-color: transparent;
+  height: 6em;
+  width: 8rem;
+  text-align: center;
+  margin-left: -2em;
+  --ripple-color: transparent;
 }
 
 #homeIcon {
-    width: 75%;
-    margin-left: 20%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    height: 100%;
-    /* height: 10em !important; */
-    text-align: center;
+  width: 75%;
+  margin-left: 20%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  height: 100%;
+  text-align: center;
 }
-/* #root { */
-/*   background-image:url('../assets/images/background.png') !important; */
-/* } */
-
-/* change to the ochre yellow (can grab from the IndigEmoji) */
-/* .ion-page  { */
-/*     --ion-color-primary:red !important;  */
-/* } */
