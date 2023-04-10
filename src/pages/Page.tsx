@@ -5,7 +5,6 @@ import {
   IonHeader,
   IonMenuButton,
   IonPage,
-  IonImg,
   IonToolbar,
 } from '@ionic/react';
 import { useParams } from 'react-router';
@@ -16,6 +15,7 @@ import homeIcon from '../assets/images/start_header_no.png';
 const Page: React.FC = () => {
   // this grabs the link name/title and puts it as  the page title
   var { name } = useParams<{ name: string }>();
+
   return (
     <IonPage>
       <IonHeader id="header">
@@ -28,7 +28,7 @@ const Page: React.FC = () => {
           {/* Logo/Icon   */}
           <IonButtons slot="start">
             <IonButton routerLink="/page/Home" routerDirection="none" id="home-icon-button">
-              <IonImg src={homeIcon} id="homeIcon" />
+              <img src={homeIcon} id="homeIcon" />
             </IonButton>
           </IonButtons>
         </IonToolbar>
