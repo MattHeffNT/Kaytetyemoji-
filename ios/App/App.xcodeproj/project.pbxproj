@@ -19,7 +19,6 @@
 
 /* Begin PBXFileReference section */
 		11416E7A29DF2386001566D2 /* ArialRoundedBold.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArialRoundedBold.TTF; path = ../../src/assets/fonts/ArialRoundedBold.TTF; sourceTree = "<group>"; };
-		11416E7B29DF2386001566D2 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../src/assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		11416E7C29DF2386001566D2 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		11416E7D29DF2386001566D2 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				11416E7A29DF2386001566D2 /* ArialRoundedBold.TTF */,
-				11416E7B29DF2386001566D2 /* Nunito-Bold.ttf */,
 				11416E7C29DF2386001566D2 /* OpenSans-Bold.ttf */,
 				11416E7D29DF2386001566D2 /* OpenSans-Regular.ttf */,
 				504EC3061FED79650016851F /* App */,
