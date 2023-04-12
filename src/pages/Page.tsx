@@ -28,7 +28,7 @@ const Page: React.FC = () => {
           {/* Logo/Icon   */}
           <IonButtons slot="start">
             <IonButton routerLink="/page/Home" routerDirection="none" id="home-icon-button">
-              <img src={homeIcon} id="homeIcon" />
+              <img src={homeIcon} alt="home icon" id="homeIcon" />
             </IonButton>
           </IonButtons>
         </IonToolbar>

@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonModal, IonToolbar, IonButtons, IonContent, IonButton, IonImg } from '@ionic/react';
-import { isPlatform, IonGrid, IonCol, IonRow } from '@ionic/react';
+import { IonGrid, IonCol, IonRow } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -95,7 +94,7 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
                 <IonCol>
                   <IonImg
                     src="../assets/welcome/Welcome1_Arnke_withwhitebackground.png"
-                    id="drawing"
+                    id="slide-img"
                   />
                 </IonCol>
                 <IonCol>
@@ -122,7 +121,7 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
             <IonGrid>
               <IonRow>
                 <IonCol>
-                  <IonImg src="../assets/welcome/Welcome2_KayeteyeMap.png" id="drawing" />
+                  <IonImg src="../assets/welcome/Welcome2_KayeteyeMap.png" id="slide-img" />
                 </IonCol>
                 <IonCol>
                   <div className="slide-container">
@@ -150,7 +149,7 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
                 <IonCol>
                   <IonImg
                     src="../assets/welcome/Welcome3_Tommy,Kathleen,Philip,Valentine.jpg"
-                    id="drawing"
+                    id="slide-img"
                   />
                 </IonCol>
                 <IonCol>
@@ -189,7 +188,7 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
             {/* "slide 4" */}
             <IonRow>
               <IonCol>
-                <IonImg src="../assets/welcome/welcome4_screenshot.png" id="drawing" />
+                <IonImg src="../assets/welcome/welcome4_screenshot.png" id="slide-img" />
               </IonCol>
               <IonCol>
                 <div className="slide-container">
@@ -213,7 +212,7 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
             {/* "slide 5" */}
             <IonRow>
               <IonCol>
-                <IonImg src="../assets/welcome/028_angkewethe.png" id="drawing" />
+                <IonImg src="../assets/welcome/028_angkewethe.png" id="slide-img" />
               </IonCol>
               <IonCol>
                 <div className="slide-container">

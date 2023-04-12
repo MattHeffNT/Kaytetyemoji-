@@ -99,7 +99,7 @@ ion-searchbar {
 
 @font-face {
   font-family: 'ArialRoundedBold';
-  src: url('../assets/fonts/ArialRoundedBold.TTF');
+  src: url('../assets/fonts/ArialRoundedBold.ttf');
   font-weight: normal;
 }
 @font-face {

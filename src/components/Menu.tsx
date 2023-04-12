@@ -1,5 +1,4 @@
-import { IonContent, IonItem, IonList, IonMenu, IonMenuToggle, IonImg } from '@ionic/react';
-
+import { IonContent, IonItem, IonList, IonMenu, IonMenuToggle } from '@ionic/react';
 import homeIcon from '../assets/images/homeIcon.png';
 import exclaimIcon from '../assets/images/infoIcon.png';
 import questionIcon from '../assets/images/icon4.png';
@@ -55,7 +54,7 @@ const Menu: React.FC = () => {
                   detail={false}
                 >
                   {/* <IonIcon slot="start" ios={appPage.image} md={appPage.image} /> */}
-                  <img src={appPage.image}></img>
+                  <img src={appPage.image} alt={appPage.title}></img>
                 </IonItem>
               </IonMenuToggle>
             );
