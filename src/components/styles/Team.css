@@ -1,16 +1,26 @@
 .teamImages {
-    padding: 1em !important;
+  padding: 1em !important;
 }
-.teamImages ion-img {
-    margin-bottom: 1em !important;
-    height: 10rem;
+.teamImages ion-img::part(image) {
+  margin-bottom: 1em !important;
+  height: 5rem;
 }
 .teams-container {
-    text-align: left;
-    position: absolute;
-    left: 0;
-    right: 0;
-    border-radius: 2em;
-    padding-top: 1em;
-    padding: 2.5em;
+  text-align: left;
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 2em;
+  padding-top: 1em;
+  padding: 2.5em;
+}
+
+.teams-container > p {
+  font-family: 'Open Sans';
+  font-weight: 350;
+}
+
+.teams-container > p > strong {
+  /* font-size: 20px; */
+  line-height: 26px;
 }

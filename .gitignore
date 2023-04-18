@@ -14,8 +14,17 @@
 # production
 /build
 # for main branch
-/android
 
+#android
+
+
+# ios
+ios/DerivedData
+ios/App/App/public
+ios/App/kaytetye stickers/Stickers.xcassets
+
+#assets generator by imessage sticker app icons
+resources/resource
 
 # misc
 .DS_Store
@@ -33,3 +42,6 @@ yarn-error.log*
 # Optional eslint cache
 .eslintcache
 test.vim
+_Kaytetyemoji.xlsx
+tmp.json
+_Kaytetyemoji.xlsx

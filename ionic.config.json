@@ -1,7 +1,8 @@
 {
-  "name": "IndigEmoji",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
+    "name": "kaytetyemoji",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "react",
+    "outputDir": "build"
 }
