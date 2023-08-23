@@ -13,9 +13,9 @@
 
 # production
 /build
+
 # for main branch
 
-#android
 
 
 # ios
@@ -34,6 +34,8 @@ resources/resource
 .env.production.local
 .vscode
 .idea
+converter.sh
+
 
 npm-debug.log*
 yarn-debug.log*
@@ -45,3 +47,7 @@ test.vim
 _Kaytetyemoji.xlsx
 tmp.json
 _Kaytetyemoji.xlsx
+
+# ignore android/ios for now (and main branch?)
+/android
+/ios
