@@ -16,37 +16,14 @@ npm install -g @ionic/cli
 
 After that run npm install as usual.
 
-## Android instructions
+## Android/IOS instructions
 
 Features such as the social sharing will not work from just a web server so you will need to install Android/IOS wrappers to be able to use this in your development environment.
 
-To build for Android you will need to use the Ionic/Capacitor CLI and do a few steps:
-
-```
-ionic capacitor add android
-```
-
-(from the documentation: with each meaningful change, ionic apps must be built into web assets before change can appear on android simulators/devices)
-
-```
-ionic capacitor copy android
-```
-
-Then if you have added any new Android native plugins etc you will need to run:
-
-```
-npx cap sync
-```
-
-To serve your app (Android) onto the simulator or device with live reload run:
-
-```
-ionic capacitor run android -l --external
-```
-
+Develop for Android https://ionicframework.com/docs/developing/android
 The steps are similar for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>
 
--   Android and IOS branches to be pushed to respective stores
+- Android and IOS branches to be pushed to respective stores
 
 ## Python files
 
@@ -56,7 +33,7 @@ The python files in the repository are quality of life scripts. The <strong>Conv
 pip install -r requirements.txt
 ```
 
--   Once converted to CSV then we can run Sam's script <strong>check_images.py</strong> to convert to JSON which we then use to dynamically load in the audio etc.
+- Once converted to CSV then we can run Sam's script <strong>check_images.py</strong> to convert to JSON which we then use to dynamically load in the audio etc.
 
 <!-- ## create your own emoji App -->
 
