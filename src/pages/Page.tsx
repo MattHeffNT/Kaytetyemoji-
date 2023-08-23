@@ -7,10 +7,11 @@ import {
   IonPage,
   IonToolbar,
 } from '@ionic/react';
+import React from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
-import homeIcon from '../assets/images/start_header_no.png';
+import homeIcon from '../assets/images/start_header_no.webp';
 
 const Page: React.FC = () => {
   // this grabs the link name/title and puts it as  the page title

@@ -2,6 +2,4 @@
 <resources>
   <string name="app_name">Kaytetyemoji</string>
   <string name="title_activity_main">Kaytetyemoji</string>
-  <string name="package_name">io.kaytetyemoji.app</string>
-  <string name="custom_url_scheme">io.kaytetyemoji.app</string>
 </resources>

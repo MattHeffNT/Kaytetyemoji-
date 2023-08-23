@@ -1,12 +1,6 @@
-import {
-  IonApp,
-  IonRouterOutlet,
-  IonSplitPane,
-  setupIonicReact,
-} from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 import Menu from './components/Menu';
 import Page from './pages/Page';
 /* Core CSS required for Ionic components to work properly */
@@ -18,41 +12,38 @@ import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
 /* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
+// import '@ionic/react/css/padding.css';
+// import '@ionic/react/css/float-elements.css';
+// import '@ionic/react/css/text-alignment.css';
+// import '@ionic/react/css/text-transformation.css';
+// import '@ionic/react/css/flex-utils.css';
+// import '@ionic/react/css/display.css';
+
 /* Theme variables */
 import './theme/variables.css';
 
 import { SplashScreen } from '@capacitor/splash-screen';
+
 setupIonicReact();
 
 const App: React.FC = () => {
-  // Hide the splash (you should do this on app launch)
-  useEffect(() => {
-    SplashScreen.show({
-      showDuration: 2500,
-      autoHide: true,
-    });
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 2500);
-  }, []);
+  SplashScreen.hide();
+  SplashScreen.show({
+    showDuration: 1500,
+    autoHide: true,
+  });
 
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId='main'>
+        <IonSplitPane contentId="main">
           <Menu />
-          <IonRouterOutlet id='main'>
-            <Route path='/' exact={true}>
-              <Redirect to='/page/Home' />
+          <IonRouterOutlet id="main">
+            <Route path="/" exact={true}>
+              <Redirect to="/page/Home" />
             </Route>
 
-            <Route path='/page/:name' exact={true}>
+            <Route path="/page/:name" exact={true}>
               <Page />
             </Route>
           </IonRouterOutlet>

@@ -8,6 +8,11 @@
 /.pnp
 .pnp.js
 
+*png
+*webp
+
+*json
+
 # testing
 /coverage
 

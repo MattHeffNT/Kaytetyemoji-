@@ -80,14 +80,17 @@ ion-chip {
   font-family: 'Open Sans';
   font-weight: normal;
   font-weight: 350;
-  text-align: center;
-  margin-left: 5em;
-  margin-right: 5em;
+  text-align: left;
+  margin-left: 2em;
+  margin-right: 2em;
   font-size: 17px;
-  margin-top: -0.1rem;
+  margin-top: 0.9rem;
+  text-justify: auto;
+  letter-spacing: 0px;
+  padding-bottom: 2vh;
 }
 
 .ghost {
   color: lightgrey !important;
-  pointer-events: none;
+  pointer-events: none !important;
 }

@@ -1,6 +1,13 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { IonModal, IonToolbar, IonButtons, IonContent, IonButton, IonImg } from '@ionic/react';
+import {
+  IonModal,
+  IonToolbar,
+  IonButtons,
+  IonContent,
+  IonButton,
+  IonImg,
+} from '@ionic/react';
 import { IonGrid, IonCol, IonRow } from '@ionic/react';
 import IonIcon from '@reacticons/ionicons';
 
@@ -71,11 +78,14 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
 
   return (
     <IonModal isOpen={isOpen}>
-      <IonContent ref={contentRef} id="slide-content">
-        <IonToolbar color="none">
-          <IonButtons slot="end">
-            <IonButton onClick={onClose} ref={closeButton} style={{ marginTop: '3rem' }}>
-              <IonIcon name="close" className="modal-icon" size="large" />
+      <IonContent ref={contentRef} id='slide-content'>
+        <IonToolbar color='none'>
+          <IonButtons slot='end'>
+            <IonButton
+              onClick={onClose}
+              ref={closeButton}
+              style={{ marginTop: '3rem' }}>
+              <IonIcon name='close' className='modal-icon' size='large' />
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -84,8 +94,7 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
           ref={slidesRef}
           modules={[Pagination, EffectFade]}
           pagination={true}
-          onSlideChange={resetSlideScroll}
-        >
+          onSlideChange={resetSlideScroll}>
           {/* @ts-ignore */}
 
           <SwiperSlide>
@@ -93,50 +102,27 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
               <IonRow>
                 <IonCol>
                   <IonImg
-                    src="../assets/welcome/Welcome1_Arnke_withwhitebackground.png"
-                    id="slide-img"
+                    src='../assets/welcome/welcomescreen1.jpg'
+                    id='slide-img'
                   />
                 </IonCol>
                 <IonCol>
-                  <div className="slide-container">
+                  <div className='slide-container'>
                     <h1 style={{ color: 'white' }}>Kaytetyemoji</h1>
                     <strong>
                       <p>
-                        Emoji nyamernarte Kaytetye inenge Barrow Creek arenye inengele mpwarenhe.
-                        Nyartepe apmere Artnke, Barrow Creek. Nte apeke ahentye arrewethe
-                        kaltyarrewethe Kaytetye angkewe. Ethwene nte arrkantele ngkeyenge inengewe.
+                        Emoji nyamernarte Kaytetye inenge Barrow Creek arenye
+                        inengele mpwarenhe. Nyartepe apmere Artnke, Barrow
+                        Creek. Nte apeke ahentye arrewethe kaltyarrewethe
+                        Kaytetye angkewe. Ethwene nte arrkantele ngkeyenge
+                        inengewe.
                       </p>
                     </strong>
                     <p style={{ color: 'white' }}>
-                      The Kaytetyemoji app was made by Kaytetye people from Barrow Creek. The Barrow
-                      Creek emoji represents this app. These emojis are for you to learn Kaytetye
-                      language and send to your friends and family for fun whenever you like.
-                    </p>
-                  </div>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonGrid>
-              <IonRow>
-                <IonCol>
-                  <IonImg src="../assets/welcome/Welcome2_KayeteyeMap.png" id="slide-img" />
-                </IonCol>
-                <IonCol>
-                  <div className="slide-container">
-                    <h1 style={{ color: 'white' }}>Nthakenhaye!</h1>
-                    <strong>
-                      <p>
-                        Emoji nyamernarte angke Kaytetye apmere Thangkenharenge (Barrow Creek),
-                        altyerre inenge, altye inenge. Arrernte inengele arrwekele arle mpwarenhe,
-                        aynanthelke Kaytetye theye ngwarenhe.
-                      </p>
-                    </strong>
-                    <p style={{ color: 'white' }}>
-                      This sticker set represents life, culture and language on Kaytetye Country in
-                      the Barrow Creek region of Central Australia. The original Arrernte Indigemoji
-                      app inspired us to make a Kaytetye set.
+                      The Kaytetyemoji app was made by Kaytetye people from
+                      Barrow Creek. The Barrow Creek emoji represents this app.
+                      These emojis are for you to learn Kaytetye language and
+                      send to your friends and family for fun whenever you like.
                     </p>
                   </div>
                 </IonCol>
@@ -148,36 +134,68 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
               <IonRow>
                 <IonCol>
                   <IonImg
-                    src="../assets/welcome/Welcome3_Tommy,Kathleen,Philip,Valentine.jpg"
-                    id="slide-img"
+                    src='../assets/welcome/map_rounded.jpg'
+                    id='slide-img'
                   />
                 </IonCol>
                 <IonCol>
-                  <div className="slide-container">
+                  <div className='slide-container'>
+                    <h1 style={{ color: 'white' }}>Nthakenhaye!</h1>
                     <strong>
                       <p>
-                        Emoji nyamernarte Akalperre arenye inengele mpwarenhe apmere Mparntwe warle.
-                        Nte kaltyarrewethe aynewanthe, wele nyarte nte arratewethe. Emoji nharte
-                        mpwarenhe artnwenge inenge kwenyelepenhe kaltyarrewethe angke elperterre
-                        arntarrtyewethe intemaperte.
+                        Emoji nyamernarte angke Kaytetye apmere Thangkenharenge
+                        (Barrow Creek), altyerre inenge, altye inenge. Arrernte
+                        inengele arrwekele arle mpwarenhe, aynanthelke Kaytetye
+                        theye ngwarenhe.
                       </p>
                     </strong>
                     <p style={{ color: 'white' }}>
-                      Kaytetyemoji was created by a Kaytetye family group in Mparntwe/Alice Springs.
-                      You can read our story on the{' '}
+                      This sticker set represents life, culture and language on
+                      Kaytetye Country in the Barrow Creek region of Central
+                      Australia. The original Arrernte Indigemoji app inspired
+                      us to make a Kaytetye set.
+                    </p>
+                  </div>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonGrid>
+              <IonRow>
+                <IonCol>
+                  <IonImg
+                    src='../assets/welcome/photo_rounded.jpg'
+                    id='slide-img'
+                  />
+                </IonCol>
+                <IonCol>
+                  <div className='slide-container'>
+                    <strong>
+                      <p>
+                        Emoji nyamernarte Akalperre arenye inengele mpwarenhe
+                        apmere Mparntwe warle. Nte kaltyarrewethe aynewanthe,
+                        wele nyarte nte arratewethe. Emoji nharte mpwarenhe
+                        artnwenge inenge kwenyelepenhe kaltyarrewethe angke
+                        elperterre arntarrtyewethe intemaperte.
+                      </p>
+                    </strong>
+                    <p style={{ color: 'white' }}>
+                      Kaytetyemoji was created by a Kaytetye family group in
+                      Mparntwe/Alice Springs. You can read our story on the{' '}
                       <span
                         style={{
                           color: '#007bff',
                           textDecoration: 'underline',
                         }}
-                        onClick={handleLink}
-                      >
+                        onClick={handleLink}>
                         aynanthe //about page.
                       </span>
                     </p>
                     <p style={{ color: 'white' }}>
-                      We made this app for our young people to have strong language. It is important
-                      that you learn Kaytetye to keep our language strong, forever.
+                      We made this app for our young people to have strong
+                      language. It is important that you learn Kaytetye to keep
+                      our language strong, forever.
                     </p>
                   </div>
                 </IonCol>
@@ -188,21 +206,26 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
             {/* "slide 4" */}
             <IonRow>
               <IonCol>
-                <IonImg src="../assets/welcome/welcome4_screenshot.png" id="slide-img" />
+                <IonImg
+                  src='../assets/welcome/screenshot_rounded.jpg'
+                  id='slide-img'
+                />
               </IonCol>
               <IonCol>
-                <div className="slide-container">
+                <div className='slide-container'>
                   <h1 style={{ color: 'white' }}>Etnyewethe aynewenhanthe!</h1>
                   <strong>
                     <p>
-                      Ethwewethe iterrtye kngwerewe, Artnke arratewethe, emoji arratewene ane
-                      arratewethe ‘ethwenke’. Platform rengele ilewethe.
+                      Ethwewethe iterrtye kngwerewe, Artnke arratewethe, emoji
+                      arratewene ane arratewethe ‘ethwenke’. Platform rengele
+                      ilewethe.
                     </p>
                   </strong>
                   <p style={{ color: 'white' }}>
-                    If you want to send an emoji to someone else…just open this app, select the
-                    sticker you want to use and tap the share button. You can then choose which
-                    platform you want to share the sticker on.
+                    If you want to send an emoji to someone else…just open this
+                    app, select the sticker you want to use and tap the share
+                    button. You can then choose which platform you want to share
+                    the sticker on.
                   </p>
                 </div>
               </IonCol>
@@ -212,26 +235,31 @@ const Slides = React.memo(({ isOpen, onClose }: SlidesProps) => {
             {/* "slide 5" */}
             <IonRow>
               <IonCol>
-                <IonImg src="../assets/welcome/028_angkewethe.png" id="slide-img" />
+                <IonImg
+                  src='../assets/welcome/talk_rounded.jpg'
+                  id='slide-img'
+                />
               </IonCol>
               <IonCol>
-                <div className="slide-container">
+                <div className='slide-container'>
                   <h1 style={{ color: 'white' }}>Elpathewethe</h1>
                   <strong>
                     <p>
-                      Arratewethe elpathewethe angke Kaytetye angkerranengarle. Ntelke angkene
-                      Kaytetye angke kwere. Arratewethe elpathewethe angke makwerle Kaytetye
-                      angkerranengarle. Erlkwe Tommy Jangalala ampilerantyenkarle. English theye nte
-                      ritemayleme tyampe.{' '}
+                      Arratewethe elpathewethe angke Kaytetye angkerranengarle.
+                      Ntelke angkene Kaytetye angke kwere. Arratewethe
+                      elpathewethe angke makwerle Kaytetye angkerranengarle.
+                      Erlkwe Tommy Jangalala ampilerantyenkarle. English theye
+                      nte ritemayleme tyampe.{' '}
                     </p>
                   </strong>
                   <p style={{ color: 'white' }}>
-                    Press word to listen to the Kaytetye word that reflects the emoji. Then try
-                    saying the word!
+                    Press word to listen to the Kaytetye word that reflects the
+                    emoji. Then try saying the word!
                   </p>
                   <p style={{ color: 'white' }}>
-                    Press phrase to listen to a Kaytetye sentence with that word told by Kaytetye
-                    elder Tommy Jangala. You can read the English translation too.
+                    Press phrase to listen to a Kaytetye sentence with that word
+                    told by Kaytetye elder Tommy Jangala. You can read the
+                    English translation too.
                   </p>
                 </div>
               </IonCol>
