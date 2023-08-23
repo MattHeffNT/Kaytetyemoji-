@@ -20,10 +20,8 @@ After that run npm install as usual.
 
 Features such as the social sharing will not work from just a web server so you will need to install Android/IOS wrappers to be able to use this in your development environment.
 
-Develop for Android https://ionicframework.com/docs/developing/android
-The steps are similar for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>
-
-- Android and IOS branches to be pushed to respective stores
+- Develop for Android <a href="https://ionicframework.com/docs/developing/android"> Android Documentation </a>
+- Develop for IOS <a href = "https://ionicframework.com/docs/developing/ios"> IOS Documentation </a>
 
 ## Python files
 
