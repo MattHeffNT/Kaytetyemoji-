@@ -10,11 +10,20 @@ import csv
 # import glob
 import json
 import os
+import re
 
-ios_path = "ios/indigemoji/Images.xcassets/{}.imageset/{}.png"
-ios_sticker_path = "ios/IndigemojiStickers/Stickers.xcassets/Sticker Pack.stickerpack/{}.sticker/{}.png"
+# ios_path = "ios/indigemoji/Images.xcassets/{}.imageset/{}.png"
+# ios_sticker_path = "ios/IndigemojiStickers/Stickers.xcassets/Sticker Pack.stickerpack/{}.sticker/{}.png"
 
 out = {"emojis": []}
+
+# Replace spaces and tabs with underscores in all filenames in the emojis directory
+dir_path = './src/assets/emojis/'
+for filename in os.listdir(dir_path):
+    new_filename = re.sub(r'\s+', '', filename)
+    if new_filename != filename:
+        os.rename(os.path.join(dir_path, filename),
+                  os.path.join(dir_path, new_filename))
 
 with open("./emojis.csv", "r") as infile:
     reader = csv.DictReader(infile)
@@ -35,14 +44,16 @@ with open("./emojis.csv", "r") as infile:
         #     continue
 
         """generates the uri"""
-        with open("./public/assets/emojis/" + row["file"], "rb") as imagefile:
+        with open("./src/assets/emojis/" + row["file"], "rb") as imagefile:
             imgdata = base64.b64encode(imagefile.read()).decode("utf8")
 
         if row['phrases'] == "":
             item = {
                 "name": row["name"],
                 "name_kaytetye": row["name_kaytetye"],
-                "file": "../assets/emojis/" + row["file"],
+                "file": "./src/assets/emojis/" + row["file"],
+                # "webp": "./assets/output/" + row["file"].replace(".png", ".webp"),
+                "webp": "./src/assets/output/" + row["file"],
                 "data": imgdata,
                 "audio": "../assets/audio/" + row["audio"],
                 "phrases": "",
@@ -60,7 +71,8 @@ with open("./emojis.csv", "r") as infile:
             item = {
                 "name": row["name"],
                 "name_kaytetye": row["name_kaytetye"],
-                "file": "../assets/emojis/" + row["file"],
+                "file": "./assets/emojis/" + row["file"],
+                "webp": "./assets/output/" + row["file"].replace(".png", ".webp"),
                 "data": imgdata,
                 "audio": "../assets/audio/" + row["audio"],
                 "phrases": "../assets/phrases/" + row["phrases"],

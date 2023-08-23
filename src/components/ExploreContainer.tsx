@@ -1,25 +1,38 @@
-import './styles/ExploreContainer.css';
-
-// import Ion components (seperated into two lines for readability)
 import { IonContent } from '@ionic/react';
-import Info from './Info';
+import { Suspense } from 'react';
+import React, { lazy } from 'react';
 import Home from './Home';
-import Faq from './Faq';
-import Team from './Team';
 
 interface ContainerProps {
-    name: string;
+  name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-    return (
-        <IonContent>
-            {/* render component based on url */}
-            {name === 'Home' && <Home />}
-            {name === 'Information' && <Info />}
-            {name === 'Faq' && <Faq />}
-            {name === 'Team' && <Team />}
-        </IonContent>
-    );
+  const Info = lazy(() => import('./Info'));
+  const Faq = lazy(() => import('./Faq'));
+  const Team = lazy(() => import('./Team'));
+
+  return (
+    <IonContent>
+      {/* render component based on url */}
+      {name === 'Home' && <Home />}
+      {name === 'Information' && (
+        <Suspense fallback={<div></div>}>
+          <Info />
+        </Suspense>
+      )}
+      {name === 'Faq' && (
+        <Suspense fallback={<div></div>}>
+          <Faq />
+        </Suspense>
+      )}
+      {name === 'Team' && (
+        <Suspense fallback={<div></div>}>
+          <Team />
+        </Suspense>
+      )}
+    </IonContent>
+  );
 };
+
 export default ExploreContainer;

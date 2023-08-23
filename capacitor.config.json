@@ -2,11 +2,12 @@
   "appId": "io.kaytetyemoji.app",
   "appName": "Kaytetyemoji",
   "webDir": "build",
-  "bundledWebRuntime": false,
+  "bundledWebRuntime": true,
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 2520,
-      "launchAutoHide": true
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "androidScaleType": "CENTER_CROP"
     }
   },
   "ScreenOrientation": {
@@ -52,10 +53,7 @@
       ]
     }
   },
-  "copy": {
-    "./src/assets/emojis": "./build/assets/emojis"
-  },
   "splash": {
-    "image": "./assets/splash/splash.png"
+    "image": "./assets/splash/splash.jpg"
   }
 }

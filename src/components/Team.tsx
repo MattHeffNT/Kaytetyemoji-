@@ -9,7 +9,7 @@ const Team: React.FC<any> = () => {
   return (
     <IonContent>
       <div className="teams-container">
-        <h1> aynanthe // Team </h1>
+        <h1> Aynanthe // team </h1>
         <p>
           <strong> emoji bosses: </strong>
         </p>
@@ -122,7 +122,7 @@ const Team: React.FC<any> = () => {
         </p>
 
         <p>
-          Full credits on the <a href="http://www.indigemoji.com.au/">Indigemoji website.</a>.
+          Full credits on the <a href="http://www.indigemoji.com.au/">Indigemoji website</a>.
         </p>
         <IonGrid>
           <IonRow>
