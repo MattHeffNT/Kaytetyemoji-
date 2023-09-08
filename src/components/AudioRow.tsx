@@ -89,27 +89,6 @@ const AudioRow: React.FC<any> = ({ emoji, icon, onClose }) => {
     };
   };
 
-  // once audio has finished, set playing back to false and reset play icon style to default state
-  // modal close event handler
-  // const Close = () => {
-  //   // stop the audio
-  //   setIsPlaying(false);
-
-  //   // we need to check if phrase is loaded on the emoji otherwise the close button won't work
-  //   // because below statement depends on it1
-  //   if (phrase) {
-  //     setPhrasePlaying(false);
-  //     phraseRow.current.classList.remove('audio-active');
-  //     phraseRow.current.classList.remove('ghost');
-  //   }
-  //   // remove ochre styling from audio/phrase rows
-  //   audioRow.current.classList.remove('audio-active');
-  //   audioRow.current.classList.remove('ghost');
-
-  //   // close the modal
-  //   onClose();
-  // };
-
   return (
     <div>
       <audio src={emoji.audio} ref={playEvent}></audio>
