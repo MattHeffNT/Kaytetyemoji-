@@ -5,14 +5,15 @@ import { useRef, useState } from 'react';
 // social sharing library
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing';
 
+let lastCalled = 0;
+
 const ShareButton: React.FC<any> = ({ emoji, icon }) => {
   const Share = useRef<any>();
   const IonIcon = icon;
 
   const shareButton = async () => {
-    let lastCalled = 0;
-    // debounce function so that user can't spam share button
     const currentTime = Date.now();
+    // debounce function so that user can't spam share button
     if (currentTime - lastCalled < 1000) {
       // delay of 1000 ms
       return;
@@ -33,21 +34,13 @@ const ShareButton: React.FC<any> = ({ emoji, icon }) => {
     // SocialSharing.share(`${emoji.name_kaytetye} | ${emoji.name}`, '', prependData);
 
     const prependData = `data:image/png;base64,${emoji.data}`;
-    SocialSharing.share(
-      `${emoji.name_kaytetye} | ${emoji.name}`,
-      '',
-      prependData
-    );
+    SocialSharing.share(`${emoji.name_kaytetye} | ${emoji.name}`, '', prependData);
   };
 
   return (
-    <IonRow ref={Share} onClick={shareButton} className='iconRow'>
+    <IonRow ref={Share} onClick={shareButton} className="iconRow">
       {/* social share  */}
-      <IonIcon
-        name='share-social-outline'
-        className='modal-icon'
-        size='large'
-      />
+      <IonIcon name="share-social-outline" className="modal-icon" size="large" />
       <h4> share </h4>
     </IonRow>
   );

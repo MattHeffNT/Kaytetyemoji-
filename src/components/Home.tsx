@@ -1,13 +1,7 @@
-import './styles/ExploreContainer.css';
+import './styles/Home.css';
 import emojis from '../assets/emojis.json';
 import { useEffect, useState, useRef, useMemo, lazy, Suspense } from 'react';
-import {
-  useIonViewWillEnter,
-  IonContent,
-  IonGrid,
-  IonRow,
-  IonCol,
-} from '@ionic/react';
+import { useIonViewWillEnter, IonContent, IonGrid, IonRow, IonCol } from '@ionic/react';
 import Search from './Search';
 import shortid from 'shortid';
 import { App } from '@capacitor/app';
@@ -69,13 +63,13 @@ const Home: React.FC = () => {
       return arr.map((emoji: any, i: number) => {
         const id = shortid.generate();
         return (
-          <IonCol size='3' key={id} ref={emojiColumn}>
+          <IonCol size="3" key={id} ref={emojiColumn}>
             <img
               key={id}
               alt={emoji.name}
               src={emoji.file}
               id={emoji.name_kaytetye}
-              className='emoji'
+              className="emoji"
               onClick={() => {
                 setMyModal({ isOpen: true });
                 setEmojisData(emoji);
@@ -101,7 +95,7 @@ const Home: React.FC = () => {
         />
       </Suspense>
 
-      <div className='container'>
+      <div className="container">
         {/* search */}
         <Search setSearchText={setSearchText} emojiArray={emojiArray} />
 
@@ -111,11 +105,7 @@ const Home: React.FC = () => {
         </IonGrid>
       </div>
       <Suspense fallback={<div></div>}>
-        <MyModal
-          isOpen={myModal.isOpen}
-          onClose={handleModalClose}
-          initialData={emojisData}
-        />
+        <MyModal isOpen={myModal.isOpen} onClose={handleModalClose} initialData={emojisData} />
       </Suspense>
     </IonContent>
   );
