@@ -6,65 +6,97 @@ const AudioRow: React.FC<any> = ({ emoji, icon, onClose, onAudioLoaded }) => {
   const audioRow = useRef<any>();
   const phraseRow = useRef<any>();
 
-  const playEvent = useRef<HTMLAudioElement>(new Audio(emoji.audio));
-  const playPhraseEvent = useRef<HTMLAudioElement>(new Audio(emoji.phrases));
+  let playEvent = useRef<HTMLAudioElement>(new Audio(emoji.audio));
+  let playPhraseEvent = useRef<HTMLAudioElement>(new Audio(emoji.phrases));
 
   const phrase = emoji.phrases;
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [phrasePlaying, setPhrasePlaying] = useState(false);
 
-  useEffect(() => {
-    // Add an event listener for the "canplaythrough" event
-    playEvent.current.addEventListener('canplaythrough', () => {
-      // Audio is ready to play, trigger the callback function
-      onAudioLoaded();
-    });
-  }, [onAudioLoaded]);
+  let [isPlaying, setIsPlaying] = useState(false);
+  let [phrasePlaying, setPhrasePlaying] = useState(false);
+
+  // remove event listeners in error/ended in cleanup
 
   const playAudio = (e: any) => {
     const audioPhrase = e.currentTarget.id;
-    let prevValue: any;
 
+    // toggle the current play state
+    let prevValue: any;
+    // toggle play/ pause
+    // grab previous value when state updated, which we can use to keep track
     if (audioPhrase === 'audio') {
       prevValue = isPlaying;
       setIsPlaying(true);
       setIsPlaying(!prevValue);
-      setPhrasePlaying(false);
-
-      if (!prevValue) {
+    } else if (audioPhrase === 'phrase') {
+      prevValue = phrasePlaying;
+      setPhrasePlaying(true);
+      setPhrasePlaying(!prevValue);
+    }
+    // check if not the previous value then play and on toggle, pause and reset audio
+    // then remove css class from icon
+    if (!prevValue) {
+      if (audioPhrase === 'audio') {
+        // play the Emoji audio
         playEvent.current.play();
+        // change color of play icon to ochre yellow
         audioRow.current.classList.add('audio-active');
+        // grey out the non-playing row
         if (phrase) {
           phraseRow.current.classList.add('ghost');
         }
-      } else {
+      } else if (audioPhrase === 'phrase') {
+        playPhraseEvent.current.play();
+        // grey out the non-playing row
+        phraseRow.current.classList.add('audio-active');
+        audioRow.current.classList.add('ghost');
+      }
+    } else {
+      if (audioPhrase === 'audio') {
         playEvent.current.pause();
         playEvent.current.currentTime = 0;
         audioRow.current.classList.remove('audio-active');
         if (phrase) {
           phraseRow.current.classList.remove('ghost');
         }
-      }
-
-      playEvent.current.onended = () => {
-        setIsPlaying(false);
-        console.log('audio ended');
-        audioRow.current.classList.remove('audio-active');
+      } else {
+        playPhraseEvent.current.pause();
+        playPhraseEvent.current.currentTime = 0;
+        audioRow.current.classList.remove('ghost');
         if (phrase) {
-          phraseRow.current.classList.remove('ghost');
+          phraseRow.current.classList.remove('audio-active');
         }
-      };
-    } else if (audioPhrase === 'phrase') {
-      // Handle phrase audio similarly using playPhraseEvent
+      }
     }
+
+    playEvent.current.onended = () => {
+      setIsPlaying(false);
+      audioRow.current.classList.remove('audio-active');
+      if (phrase) {
+        phraseRow.current.classList.remove('ghost');
+      }
+    };
+
+    playPhraseEvent.current.onended = () => {
+      setPhrasePlaying(false);
+      phraseRow.current.classList.remove('audio-active');
+      audioRow.current.classList.remove('ghost');
+    };
   };
 
+  // cleanup
   useEffect(() => {
     // Ensure that the component is mounted
     let isMounted = true;
 
     const cleanup = () => {
       if (isMounted) {
+        // reset to default values
+        setIsPlaying(false);
+        setPhrasePlaying(false);
+
+        // audioRow
+        // and PhraseRow onlcick Event Listener remove
+
         // Remove event listeners
         if (playEvent.current) {
           playEvent.current.pause();
@@ -76,6 +108,7 @@ const AudioRow: React.FC<any> = ({ emoji, icon, onClose, onAudioLoaded }) => {
           playPhraseEvent.current.currentTime = 0;
           playPhraseEvent.current.onended = null;
         }
+
         isMounted = false;
       }
     };
@@ -89,18 +122,15 @@ const AudioRow: React.FC<any> = ({ emoji, icon, onClose, onAudioLoaded }) => {
       <IonRow
         ref={audioRow}
         onClick={() => playAudio({ currentTarget: { id: 'audio' } })}
-        className='iconRow'
-        id='audio'>
+        className="iconRow"
+        id="audio"
+      >
         {isPlaying ? (
           // Render the stop icon when audio is playing
-          <IonIcon name='stop-circle' className='modal-icon' size='large' />
+          <IonIcon name="stop-circle" className="modal-icon" size="large" />
         ) : (
           // Render the play icon when audio is not playing
-          <IonIcon
-            name='play-circle-outline'
-            className='modal-icon'
-            size='large'
-          />
+          <IonIcon name="play-circle-outline" className="modal-icon" size="large" />
         )}
         <h4> word </h4>
       </IonRow>
@@ -110,18 +140,15 @@ const AudioRow: React.FC<any> = ({ emoji, icon, onClose, onAudioLoaded }) => {
         <IonRow
           ref={phraseRow}
           onClick={() => playAudio({ currentTarget: { id: 'phrase' } })}
-          className='iconRow'
-          id='phrase'>
+          className="iconRow"
+          id="phrase"
+        >
           {phrasePlaying ? (
             // Render the stop icon when phrase audio is playing
-            <IonIcon name='stop-circle' className='modal-icon' size='large' />
+            <IonIcon name="stop-circle" className="modal-icon" size="large" />
           ) : (
             // Render the play icon when phrase audio is not playing
-            <IonIcon
-              name='play-circle-outline'
-              className='modal-icon'
-              size='large'
-            />
+            <IonIcon name="play-circle-outline" className="modal-icon" size="large" />
           )}
           <h4> phrase </h4>
           <br />
