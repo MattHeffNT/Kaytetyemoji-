@@ -10,6 +10,7 @@ const Search: React.FC<SearchProps> = ({ setSearchText, emojiArray }) => {
   const searchBarRef = useRef<HTMLIonSearchbarElement>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Handle home display based on input
   function handleInput(event: React.MouseEvent<HTMLInputElement, ChangeEvent>) {
     const query = (event.target as HTMLInputElement).value.toLowerCase();
     const rows = Array.from(emojiArray.current.children);
@@ -23,7 +24,6 @@ const Search: React.FC<SearchProps> = ({ setSearchText, emojiArray }) => {
         const shouldShow = emoji.id.toLowerCase().indexOf(query) > -1;
         const englishEmoji = col.firstElementChild.alt.toLowerCase().indexOf(query) > -1;
 
-        // change container and emoji display
         // status depending on whether search input detected
         if (shouldShow || englishEmoji) {
           // reset gridded emojis to default style

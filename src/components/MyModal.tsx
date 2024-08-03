@@ -26,12 +26,6 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData, index }) => {
   const [name, setName]: any = useState(emoji.name_kaytetye);
   const [phrase, setPhrase]: any = useState(emoji.phrases_kaytetye);
 
-  const handleAudioLoaded = () => {
-    // Log a message
-    console.log('Audio loaded and ready to play.');
-    // Trigger other actions if needed
-  };
-
   // Set the default title to Kaytetye when modal opened
   useEffect(() => {
     setName(emoji.name_kaytetye);
@@ -126,7 +120,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData, index }) => {
             <IonCol>
               {/* share button and audio buttons */}
               <ShareButton emoji={emoji} icon={IonIcon} />
-              <AudioRow emoji={emoji} icon={IonIcon} onAudioLoaded={handleAudioLoaded} />
+              <AudioRow emoji={emoji} icon={IonIcon} />
             </IonCol>
             {/* on english/kaytetye click change phrase language */}
             <p className="phraseText"> {phrase}</p>
