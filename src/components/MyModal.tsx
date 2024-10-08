@@ -90,7 +90,7 @@ const MyModal: React.FC<any> = ({ isOpen, onClose, initialData, index }) => {
 
   return (
     <IonModal isOpen={isOpen}>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar color="none">
           <IonButtons slot="start">
             {/* close button */}
