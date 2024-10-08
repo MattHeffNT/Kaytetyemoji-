@@ -27,6 +27,7 @@
 ios/DerivedData
 ios/App/App/public
 ios/App/kaytetye stickers/Stickers.xcassets
+ios/App/output
 
 #assets generator by imessage sticker app icons
 resources/resource
